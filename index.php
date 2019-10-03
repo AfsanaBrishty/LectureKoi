@@ -1,3 +1,9 @@
+<?php
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,15 +146,18 @@
 			<div class="container">
 				<div class="row">
 
-					<div class="col-lg-6 hero_box_col">
+
+				<div class="col-lg-6 hero_box_col">
+					<a href="lectures.html" >
 						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
 							<img src="images/university.png"  alt="">
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">Collaborated Universities</h2>
-								<a href="#" class="hero_box_link">view more</a>
+								<a href="lectures.html" class="hero_box_link">view more</a>
 							</div>
 						</div>
-					</div>
+					</a>
+				</div>
 
 
 

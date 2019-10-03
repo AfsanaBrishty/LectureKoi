@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,12 +102,6 @@
             <h1>Lectures</h1>
         </div>
     </div>
-
-
-
-
-
-
 
 
 
