@@ -2,15 +2,66 @@
 include ("custom_functions.php");
 include ("config.php");
 
-$con=mysqli_connect("localhost","root","","test") or die("Unable to connect Database");
+$con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
 if (isset($_POST['submit'])) {
 
-    $subject = $_POST["subject"];
-    echo "the Value selected is ".$subject;
+    $id = $_POST["id"];
+    $dept = $_POST["department"];
+    $semester = $_POST["semester"];
+    $course = $_POST["course"];
+    $theory_lab = $_POST["theory_lab"];
+    $course_teacher_name = $_POST["course_teacher"];
+    $lecture_link = $_POST["lecture_link"];
+    $video_link = $_POST["video_link"];
+    $message = $_POST["message"];
 
-    $query="insert into document (document_name) VALUES('$file_name')";
-    $result=mysqli_query($con,$query);
+    /*
+    echo "the Value selected is </br> ".$id ."</br>";
+    echo "".$dept ."</br>";
+    echo "".$semester ."</br>";
+    echo "".$course ."</br>";
+    echo "".$theory_lab ."</br>";
+    echo "".$course_teacher_name."</br>";
+    echo "".$lecture_link ."</br>";
+    echo "".$video_link ."</br>";
+    echo "".$message ."</br>";
+*/
+
+
+
+    echo $varsity_names['1'];
+
+
+    //if admin insert the data then it will store info in 'lectureupload' table otherwise it will upload lecture
+    // in 'crowd_sourcing _system' table
+    if(strcmp($id,"1111"))
+    {
+        $query="INSERT INTO aust_lectureupload(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
+                VALUES ('$id','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+        $result=mysqli_query($con,$query);
+        if($result)
+        {
+            phpalert('Data inserted successfully');
+        }
+        else{
+            phpalert('Data insertion failed');
+        }
+    }
+    else
+    {
+        $query="INSERT INTO aust_lectureupload_crowd_source_system(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
+                VALUES ('$id','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+        $result=mysqli_query($con,$query);
+        if($result)
+        {
+            phpalert('Data inserted successfully');
+        }
+        else{
+            phpalert('Data insertion failed');
+        }
+    }
+
 }
 ?>
 
@@ -119,101 +170,141 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
 
-        
+        <h2 align="center"  >Uploading lectures </h2>
+        <br />
         <!-- Form of uploading lectures  -->
-        <div class="d-inline-flex p-2 "  >
-            <h2 align="center"  >Uploading lectures </h2>
-            <br />
-            <div class="col-md-6" style="margin:0 auto; float:none;">
+        <div class="container-fluid" >
+          <div class="row">
+                  <div class="col-md-3">
+
+                  </div>
+
+                        <div class="d-inline-flex p-2 bg-dark col-md-6">
+
+                                <div  style="margin:0 auto; float:none;">
 
 
-                    <form action ="lecture_upload.php"method="POST" enctype="multipart/form-data">
+                                    <form action ="" method="POST" enctype="multipart/form-data">
 
-                        <div class="form-group">
-                            <label>Enter Id</label>
-                            <input type="text" name="id" class="form-control" placeholder="Enter id" />
-                        </div>
-
-
-
-                        <div class="dropdown" >
-
-                            <select class="form-control" name="department">
-                                <option value="cse">CSE</option>
-                                <option value="eee">EEE</option>
-                                <option value="ipe">IPE</option>
-                                <option value="me">Mechanical</option>
-                                <option value="te">Textile</option>
-                                <option value="ce">Civil</option>
-                                <option value="bba">BBA</option>
-
-                            </select>
-
-                        </div>
-
-                        <div class="dropdown" >
-
-                            <select class="form-control" name="semester">
-                                <option value="1.1">1.1</option>
-                                <option value="1.2">1.2</option>
-                                <option value="2.1">2.1</option>
-                                <option value="2.2">2.2</option>
-                                <option value="3.1">3.1</option>
-                                <option value="3.2">3.2</option>
-                                <option value="4.1">4.1</option>
-                                <option value="4.2">4.2</option>
-
-                            </select>
-
-                        </div>
-
-                        <div class="dropdown" >
-
-                            <select class="form-control" name="subject">
-                                <option value="cse">CSE</option>
-                                <option value="eee">EEE</option>
-                                <option value="ipe">IPE</option>
-                                <option value="me">Mechanical</option>
-                                <option value="te">Textile</option>
-                                <option value="ce">Civil</option>
-                                <option value="bba">BBA</option>
-
-                            </select>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label>Enter Course Teacher</label>
-                            <input type="text" name="course_teacher" class="form-control" placeholder="Enter Course Teacher Name" value="" />
-                        </div>
-
-                        <div class="form-group">
-                            <label >Lecture drive link</label>
-                            <textarea name="lecture_link" class="form-control" placeholder="Enter lecture drive link"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label >video tutorial regarding the lecture (Optional)</label>
-                            <textarea name="video_link" class="form-control" placeholder="Enter video link(if any) "></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label >Message</label>
-                            <textarea name="message" class="form-control" placeholder="Enter a message"></textarea>
-                        </div>
+                                        <div class="form-group">
+                                            <label>Enter Id</label>
+                                            <input type="text" name="id" class="form-control" placeholder="Enter id" />
+                                        </div>
 
 
+                                        <div class="form-group">
+                                            <label>Select Department</label>
+                                            <div class="dropdown" >
 
-                      <!--  <input type="file" name="file[]" id="fileToUpload" multiple>  -->
+                                                <select class="form-control" name="department">
+                                                    <option value="null">Select department</option>
+                                                    <option value="cse">CSE</option>
+                                                    <option value="eee">EEE</option>
+                                                    <option value="ipe">IPE</option>
+                                                    <option value="me">Mechanical</option>
+                                                    <option value="te">Textile</option>
+                                                    <option value="ce">Civil</option>
+                                                    <option value="bba">BBA</option>
 
-                        <div class="form-group" align="center">
-                            <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
-                        </div>
+                                                </select>
 
-                    </form>
-            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Select Semester</label>
+                                            <div class="dropdown" >
+
+                                                <select class="form-control" name="semester">
+                                                    <option value="null">Select Semester</option>
+                                                    <option value="1">1.1</option>
+                                                    <option value="2">1.2</option>
+                                                    <option value="3">2.1</option>
+                                                    <option value="4">2.2</option>
+                                                    <option value="5">3.1</option>
+                                                    <option value="6">3.2</option>
+                                                    <option value="7">4.1</option>
+                                                    <option value="8">4.2</option>
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Select Course </label>
+                                            <div class="dropdown" >
+
+                                                <select class="form-control" name="course">
+                                                    <option value="null">Select Course</option>
+                                                    <option value="C">C programming</option>
+                                                    <option value="java">Java OOP</option>
+                                                    <option value="DS">Data Structure</option>
+                                                    <option value="algorithm">Algorithm</option>
+                                                    <option value="java_sd">Java Software development</option>
+                                                    <option value="android_sd">Android development</option>
+                                                    <option value="mechanical_fundamental">Mechanical Fundamental</option>
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Theory/Lab </label>
+                                            <div class="dropdown" >
+
+                                                <select class="form-control" name="theory_lab">
+                                                    <option value="null">Theory/Lab</option>
+                                                    <option value="theory">Theory</option>
+                                                    <option value="lab">Lab</option>
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            <label>Enter Course Teacher</label>
+                                            <input type="text" name="course_teacher" class="form-control" placeholder="Enter Course Teacher Name" value="" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label >Lecture drive link</label>
+                                            <textarea name="lecture_link" class="form-control" placeholder="Enter lecture drive link"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label >video tutorial regarding the lecture (Optional)</label>
+                                            <textarea name="video_link" class="form-control" placeholder="Enter video link(if any) "></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label >Message</label>
+                                            <textarea name="message" class="form-control" placeholder="Enter a message"></textarea>
+                                        </div>
+
+
+
+                                        <!--  <input type="file" name="file[]" id="fileToUpload" multiple>  -->
+
+                                        <div class="form-group" align="center">
+                                            <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+              <div class="col-md-3">
+
+              </div>
+          </div>
         </div>
-
 
         <!-- Footer -->
 
