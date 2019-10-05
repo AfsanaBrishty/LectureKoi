@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>LectureKoi-Lectures</title>
+<title>Universities</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -116,7 +116,7 @@
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<!-- all the images must be 690 X 520 resolution -->
-						<img class="card-img-top" src="images/aust.jpg" alt="" >
+						<img class="card-img-top" src="images/varsity/aust.jpg" alt="" >
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">AUST</a></div>
 
@@ -134,7 +134,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/Buet.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/Buet.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">BUET</a></div>
 
@@ -152,7 +152,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/CUET.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/CUET.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">CUET</a></div>
 
@@ -170,7 +170,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/kuet.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/kuet.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">KUET</a></div>
 
@@ -188,7 +188,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/JU.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/JU.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">Jahangirnagar University</a></div>
 
@@ -206,7 +206,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/DU.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/DU.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">Dhaka University</a></div>
 
@@ -224,7 +224,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/DMC.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/DMC.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="lectures_department.html">Dhaka Medical</a></div>
 
@@ -242,7 +242,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/ruet.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/ruet.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">RUET</a></div>
 						</div>
@@ -259,7 +259,7 @@
 				<!-- Popular Course Item -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
-						<img class="card-img-top" src="images/SUST.jpg" alt="">
+						<img class="card-img-top" src="images/varsity/SUST.jpg" alt="">
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">SUST</a></div>
 

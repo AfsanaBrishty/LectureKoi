@@ -23,7 +23,7 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>course</span>
+					<span>LectureKoi</span>
 				</div>
 			</div>
 
@@ -41,10 +41,7 @@
 				</div>
 			</nav>
 		</div>
-		<div class="header_side d-flex flex-row justify-content-center align-items-center">
-			<img src="images/phone-call.svg" alt="">
-			<span>+43 4566 7788 2457</span>
-		</div>
+
 
 		<!-- Hamburger -->
 		<div class="hamburger_container">
@@ -66,7 +63,7 @@
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
 					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-					<li class="menu_item menu_mm"><a href="about.html">About us</a></li>
+					<li class="menu_item menu_mm"><a href="contributors.html">About us</a></li>
 					<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
 					<li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
 					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
@@ -85,7 +82,7 @@
 					</ul>
 				</div>
 
-				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+				<div class="menu_copyright menu_mm"> All rights reserved</div>
 			</div>
 
 		</div>
@@ -99,17 +96,17 @@
 			<div class="home_background prlx" style="background-image:url(images/teachers_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h1>Teachers</h1>
+			<h1>Contributors</h1>
 		</div>
 	</div>
 
-	<!-- Teachers -->
+	<!-- Contributors -->
 
 	<div class="teachers page_section">
 		<div class="container">
 			<div class="row">
 				
-				<!-- Teacher -->
+				<!-- Contributors -->
 				<div class="col-lg-4 teacher">
 					<div class="card">
 						<div class="card_img">
@@ -137,7 +134,7 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_2.jpg" alt="https://unsplash.com/@jcpeacock">
+							<img class="card-img-top trans_200" src="images/teacher_2.jpg" alt="">
 						</div>
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">Christian Blue</a></div>
