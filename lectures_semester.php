@@ -1,6 +1,9 @@
 <?php
-echo $GLOBALS['varsity_name']." ".$_GET['dept_name'] ;
-//$GLOBALS['varsity_name']=$_GET['varsity_name'];
+
+include ("custom_functions.php");
+
+    $varsity=getVarsityName();
+    echo $varsity;
 
 ?>
 
