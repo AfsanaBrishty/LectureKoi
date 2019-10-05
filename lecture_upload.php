@@ -1,12 +1,14 @@
 <?php
+$error='';
 include ("custom_functions.php");
-include ("config.php");
 
+require ("config.php");
 $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
 if (isset($_POST['submit'])) {
 
     $id = $_POST["id"];
+    $varsity=$_POST["varsity_name"];
     $dept = $_POST["department"];
     $semester = $_POST["semester"];
     $course = $_POST["course"];
@@ -16,6 +18,9 @@ if (isset($_POST['submit'])) {
     $video_link = $_POST["video_link"];
     $message = $_POST["message"];
 
+    if(empty($id) || empty($dept) || empty($semester) || empty($theory_lab) || empty($course) || empty($lecture_link) || empty($varsity)) {
+        $error="Please fillup the necessary information";
+    }
     /*
     echo "the Value selected is </br> ".$id ."</br>";
     echo "".$dept ."</br>";
@@ -29,36 +34,34 @@ if (isset($_POST['submit'])) {
 */
 
 
-
-    echo $varsity_names['1'];
-
-
     //if admin insert the data then it will store info in 'lectureupload' table otherwise it will upload lecture
     // in 'crowd_sourcing _system' table
-    if(strcmp($id,"1111"))
+    if(strcmp($id,"1111")==0)
     {
-        $query="INSERT INTO aust_lectureupload(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
-                VALUES ('$id','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
-        $result=mysqli_query($con,$query);
-        if($result)
-        {
-            phpalert('Data inserted successfully');
-        }
-        else{
-            phpalert('Data insertion failed');
+        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($theory_lab) && !empty($course) && !empty($lecture_link)) {
+            $query = "INSERT INTO " . $varsity . "_lectureupload(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
+                VALUES ('$id','$varsity','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+                $error="data inserted successfully";
+                //phpalert('Data inserted successfully');
+            } else {
+                $error="data insertion failed";
+               // phpalert('Data insertion failed');
+            }
         }
     }
     else
     {
-        $query="INSERT INTO aust_lectureupload_crowd_source_system(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
-                VALUES ('$id','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
-        $result=mysqli_query($con,$query);
-        if($result)
-        {
-            phpalert('Data inserted successfully');
-        }
-        else{
-            phpalert('Data insertion failed');
+        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($theory_lab) && !empty($course) && !empty($lecture_link)) {
+            $query = "INSERT INTO " . $varsity . "_lectureupload_crowd_source_system(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
+                VALUES ('$id','$varsity','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+                $error="data inserted successfully";
+            } else {
+                $error="data insertion failed";
+            }
         }
     }
 
@@ -188,8 +191,31 @@ if (isset($_POST['submit'])) {
 
                                         <div class="form-group">
                                             <label>Enter Id</label>
-                                            <input type="text" name="id" class="form-control" placeholder="Enter id" />
+                                            <input type="text" name="id" class="form-control" placeholder="Enter id" required="required" data-error="Please fillup this field" />
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <label>Select University Name</label>
+                                            <div class="dropdown" >
+
+                                                <select class="form-control" name="varsity_name">
+                                                    <option value="null">Select University</option>
+                                                    <option value="aust">AUST</option>
+                                                    <option value="buet">BUET</option>
+                                                    <option value="cuet">CUET</option>
+                                                    <option value="kuet">KUET</option>
+                                                    <option value="ruet">RUET</option>
+                                                    <option value="sust">SUST</option>
+                                                    <option value="du">DU</option>
+                                                    <option value="ju">JU</option>
+                                                    <option value="dmc">DMC</option>
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
 
 
                                         <div class="form-group">
@@ -274,7 +300,7 @@ if (isset($_POST['submit'])) {
 
                                         <div class="form-group">
                                             <label >Lecture drive link</label>
-                                            <textarea name="lecture_link" class="form-control" placeholder="Enter lecture drive link"></textarea>
+                                            <textarea name="lecture_link" class="form-control" placeholder="Enter lecture drive link" required="required" data-error="Please fillup this field"></textarea>
                                         </div>
 
                                         <div class="form-group">
@@ -292,6 +318,7 @@ if (isset($_POST['submit'])) {
                                         <!--  <input type="file" name="file[]" id="fileToUpload" multiple>  -->
 
                                         <div class="form-group" align="center">
+                                            <?php echo $error."</br>"?>
                                             <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
                                         </div>
 

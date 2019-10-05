@@ -1,3 +1,9 @@
+<?php
+echo $GLOBALS['varsity_name']." ".$_GET['dept_name'] ;
+//$GLOBALS['varsity_name']=$_GET['varsity_name'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +46,11 @@
             <nav class="main_nav_container">
                 <div class="main_nav">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="index.html">home</a></li>
-                        <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                        <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="#">Sign In</a></li>
-                        <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
                     </ul>
                 </div>
             </nav>
@@ -70,11 +76,11 @@
         <div class="menu_inner menu_mm">
             <div class="menu menu_mm">
                 <ul class="menu_list menu_mm">
-                    <li class="main_nav_item"><a href="index.html">home</a></li>
-                    <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                    <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                    <li class="main_nav_item"><a href="index.php">home</a></li>
+                    <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                    <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                     <li class="main_nav_item"><a href="#">Sign In</a></li>
-                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                    <li class="main_nav_item"><a href="contact.php">contact</a></li>
                 </ul>
 
                 <!-- Menu Social -->
@@ -98,9 +104,10 @@
             <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Lectures</h1>
+            <h1>Semester</h1>
         </div>
     </div>
+
 
 
     <!-- select semester -->

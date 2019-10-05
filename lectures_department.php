@@ -1,7 +1,14 @@
+<?php
+echo $_GET['varsity_name'] ;
+$GLOBALS['varsity_name']=$_GET['varsity_name'];
+echo $GLOBALS['varsity_name'] ;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LectureKoi-Lectures</title>
+    <title>LectureKoi-Departments</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -40,11 +47,11 @@
             <nav class="main_nav_container">
                 <div class="main_nav">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="index.html">home</a></li>
-                        <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                        <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="#">Sign In</a></li>
-                        <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
                     </ul>
                 </div>
             </nav>
@@ -70,11 +77,11 @@
         <div class="menu_inner menu_mm">
             <div class="menu menu_mm">
                 <ul class="menu_list menu_mm">
-                    <li class="main_nav_item"><a href="index.html">home</a></li>
-                    <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                    <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                    <li class="main_nav_item"><a href="index.php">home</a></li>
+                    <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                    <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                     <li class="main_nav_item"><a href="#">Sign In</a></li>
-                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                    <li class="main_nav_item"><a href="contact.php">contact</a></li>
                 </ul>
 
                 <!-- Menu Social -->
@@ -98,7 +105,7 @@
             <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Lectures</h1>
+            <h1>Departments</h1>
         </div>
     </div>
 
@@ -118,7 +125,7 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.html" > <h2 class="hero_box_title">IPE</h2></a>
+                        <a href="lectures_semester.php?dept_name=cse" > <h2 class="hero_box_title">CSE</h2></a>
                     </div>
                 </div>
 
@@ -126,7 +133,7 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.html" > <h2 class="hero_box_title">IPE</h2></a>
+                        <a href="lectures_semester.php?dept_name=eee" > <h2 class="hero_box_title">EEE</h2></a>
 
                     </div>
                 </div>
@@ -134,7 +141,7 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.html" > <h2 class="hero_box_title">IPE</h2></a>
+                        <a href="lectures_semester.php?dept_name=mechanical" > <h2 class="hero_box_title">Mechanical</h2></a>
 
                     </div>
                 </div>
@@ -142,7 +149,7 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.html" > <h2 class="hero_box_title">IPE</h2></a>
+                        <a href="lectures_semester.php?dept_name=civil" > <h2 class="hero_box_title">Civil</h2></a>
 
                     </div>
                 </div>
@@ -152,7 +159,16 @@
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_semester.html" > <h2 class="hero_box_title">IPE</h2></a>
+                        <a href="lectures_semester.php?dept_name=ipe" > <h2 class="hero_box_title">IPE</h2></a>
+
+                    </div>
+                </div>
+
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                    <img src="images/university.png"  alt="">
+                    <div class="hero_box_content">
+
+                        <a href="lectures_semester.php?dept_name=textile" > <h2 class="hero_box_title">Textiles</h2></a>
 
                     </div>
                 </div>
