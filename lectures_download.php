@@ -1,29 +1,38 @@
 <?php
 
-        $session_list = array("spring 17", "fall 17", "spring 18","fall 18","spring 19","fall 19","spring 20","fall 20");
+
+        $session_list = array("spring 17"=>"1701", "fall 17"=>"1702", "spring 18"=>"1801","fall 18"=>"1802","spring 19"=>"1901","fall 19"=>"1902",
+                        "spring 20"=>"2001","fall 20"=>"2002");
 
 
-
-        $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
-
-        // The nested array to hold all the arrays
-        $lectures_holder = [];
-
-        $sql="SELECT studentId,department,fileurl,video_url,message FROM lectureupload WHERE session='1701' ";
-
-
-        if ($result=mysqli_query($con,$sql))
+        function fetch_download_info($x_value)
         {
-            // Fetch one and one row
-            while ($row=mysqli_fetch_row($result))
+            $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
+            // The nested array to hold all the arrays
+            $lectures_holder = [];
+
+
+            $sql = "SELECT department,fileurl,video_url,message FROM lectureupload WHERE session='".$x_value."' ";
+
+            if ($result=mysqli_query($con,$sql))
             {
-                // printf ("%s (%s)\n",$row[0],$row[1]);
-                $lectures_holder[]=$row;
+                // Fetch one and one row
+                while ($row=mysqli_fetch_row($result))
+                {
+                    // printf ("%s (%s)\n",$row[0],$row[1]);
+                    $lectures_holder[]=$row;
+                }
+                // Free result set
+                mysqli_free_result($result);
             }
-            // Free result set
-            mysqli_free_result($result);
+            mysqli_close($con);
+
+
+            return $lectures_holder;
         }
-        mysqli_close($con);
+
+
 
 ?>
 
@@ -137,7 +146,7 @@
         <div class="row">
             <div class="col">
                 <div class="section_title text-center">
-                    <h1>Click the following box to download the lectures from google drive link</h1>
+                    <h1>Download the lectures from google drive link</h1>
                 </div>
             </div>
         </div>
@@ -146,31 +155,30 @@
             <div class="col-lg-12 hero_box_col">
 
                 <?php
-                for($i = 0; $i < count($session_list); $i++) {
+                foreach($session_list as $x => $x_value)
+                {
                     echo "<br>";
-                 //   foreach ($lectures_holder as $value) :
                         ?>
-
--->
-
                         <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                             <img src="images/university.png" alt="">
                             <div class="hero_box_content">
-                                <h2 class="hero_box_title"> <?php echo $session_list[$i]; ?> </h2>
+                                <h2 class="hero_box_title"> <?php echo $x; ?> </h2>
                                 <div>
+                                    <?php
+                                        $lectures_holder[]=fetch_download_info($x_value);
+                                        echo print_r($lectures_holder);
+                                    ?>
+                                        <h3><?php// echo  $value[0] ?></h3>
+                                        <h4><?php //echo  $value[1] ?></h4>
+                                        <h4><?php// echo  $value[2] ?></h4>
+                                        <p><?php //echo  $value[3] ?></p>
+
 
                                 </div>
                             </div>
                         </div>
 
-
-                    <?php //  endforeach   ?>
                 <?php  }   ?>
-
-
-
-
-
 
 
 
