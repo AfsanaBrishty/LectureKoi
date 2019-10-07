@@ -1,46 +1,34 @@
 <?php
-$error='';
+
 include ("custom_functions.php");
 
-require ("config.php");
-$con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
 
 if (isset($_POST['submit'])) {
+    //require ("config.php");
+    $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
     $id = $_POST["id"];
     $varsity=$_POST["varsity_name"];
     $dept = $_POST["department"];
     $semester = $_POST["semester"];
-    $course = $_POST["course"];
-    $theory_lab = $_POST["theory_lab"];
-    $course_teacher_name = $_POST["course_teacher"];
+    $session = $_POST["session"];
     $lecture_link = $_POST["lecture_link"];
     $video_link = $_POST["video_link"];
     $message = $_POST["message"];
 
-    if(empty($id) || empty($dept) || empty($semester) || empty($theory_lab) || empty($course) || empty($lecture_link) || empty($varsity)) {
+    if(empty($id) || empty($dept) || empty($semester) || empty($session)  || empty($lecture_link) || empty($varsity)) {
         $error="Please fillup the necessary information";
     }
-    /*
-    echo "the Value selected is </br> ".$id ."</br>";
-    echo "".$dept ."</br>";
-    echo "".$semester ."</br>";
-    echo "".$course ."</br>";
-    echo "".$theory_lab ."</br>";
-    echo "".$course_teacher_name."</br>";
-    echo "".$lecture_link ."</br>";
-    echo "".$video_link ."</br>";
-    echo "".$message ."</br>";
-*/
 
 
     //if admin insert the data then it will store info in 'lectureupload' table otherwise it will upload lecture
     // in 'crowd_sourcing _system' table
     if(strcmp($id,"1111")==0)
     {
-        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($theory_lab) && !empty($course) && !empty($lecture_link)) {
-            $query = "INSERT INTO " . $varsity . "_lectureupload(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
-                VALUES ('$id','$varsity','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($session) && !empty($lecture_link)) {
+            $query = "INSERT INTO lectureupload(StudentId,varsity_name, department, semester, session, fileUrl,video_url,message) 
+                        VALUES ('$id','$varsity','$dept','$semester','$session','$lecture_link','$video_link','$message')";
             $result = mysqli_query($con, $query);
             if ($result) {
                 $error="data inserted successfully";
@@ -53,9 +41,10 @@ if (isset($_POST['submit'])) {
     }
     else
     {
-        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($theory_lab) && !empty($course) && !empty($lecture_link)) {
-            $query = "INSERT INTO " . $varsity . "_lectureupload_crowd_source_system(StudentId, department, semester, theory_lab, course, fileUrl,video_url, course_teacher,message) 
-                VALUES ('$id','$varsity','$dept','$semester','$theory_lab','$course','$lecture_link','$video_link','$course_teacher_name','$message')";
+        if(!empty($id) && !empty($varsity) && !empty($dept) && !empty($semester) && !empty($session) && !empty($lecture_link)) {
+            $query = "INSERT INTO lectureupload_crowd_source_system(StudentId,varsity_name, department, semester, session, fileUrl,video_url,message,status) 
+                        VALUES ('$id','$varsity','$dept','$semester','$session','$lecture_link','$video_link','$message',0)";
+
             $result = mysqli_query($con, $query);
             if ($result) {
                 $error="data inserted successfully";
@@ -111,11 +100,11 @@ if (isset($_POST['submit'])) {
                 <nav class="main_nav_container">
                     <div class="main_nav">
                         <ul class="main_nav_list">
-                            <li class="main_nav_item"><a href="index.html">home</a></li>
-                            <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                            <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                            <li class="main_nav_item"><a href="index.php">home</a></li>
+                            <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                            <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                             <li class="main_nav_item"><a href="#">Sign In</a></li>
-                            <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                            <li class="main_nav_item"><a href="contact.php">contact</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -141,11 +130,11 @@ if (isset($_POST['submit'])) {
             <div class="menu_inner menu_mm">
                 <div class="menu menu_mm">
                     <ul class="menu_list menu_mm">
-                        <li class="main_nav_item"><a href="index.html">home</a></li>
-                        <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                        <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="#">Sign In</a></li>
-                        <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
                     </ul>
 
                     <!-- Menu Social -->
@@ -258,45 +247,25 @@ if (isset($_POST['submit'])) {
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Select Course </label>
+                                            <label>Select Session</label>
                                             <div class="dropdown" >
 
-                                                <select class="form-control" name="course">
-                                                    <option value="null">Select Course</option>
-                                                    <option value="C">C programming</option>
-                                                    <option value="java">Java OOP</option>
-                                                    <option value="DS">Data Structure</option>
-                                                    <option value="algorithm">Algorithm</option>
-                                                    <option value="java_sd">Java Software development</option>
-                                                    <option value="android_sd">Android development</option>
-                                                    <option value="mechanical_fundamental">Mechanical Fundamental</option>
+                                                <select class="form-control" name="session">
+                                                    <option value="null">Select Session</option>
+                                                    <option value="1801">Spring 18</option>
+                                                    <option value="1802">Fall 18</option>
+                                                    <option value="1901">Spring 19</option>
+                                                    <option value="1902">Fall 19</option>
+                                                    <option value="2001">Spring 20</option>
+                                                    <option value="2002">Fall 20</option>
+                                                    <option value="2101">Spring 21</option>
+                                                    <option value="2102">Fall 21</option>
 
                                                 </select>
 
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Theory/Lab </label>
-                                            <div class="dropdown" >
-
-                                                <select class="form-control" name="theory_lab">
-                                                    <option value="null">Theory/Lab</option>
-                                                    <option value="theory">Theory</option>
-                                                    <option value="lab">Lab</option>
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <div class="form-group">
-                                            <label>Enter Course Teacher</label>
-                                            <input type="text" name="course_teacher" class="form-control" placeholder="Enter Course Teacher Name" value="" />
-                                        </div>
 
                                         <div class="form-group">
                                             <label >Lecture drive link</label>
@@ -318,7 +287,10 @@ if (isset($_POST['submit'])) {
                                         <!--  <input type="file" name="file[]" id="fileToUpload" multiple>  -->
 
                                         <div class="form-group" align="center">
-                                            <?php echo $error."</br>"?>
+                                            <?php
+                                                $error='';
+                                                echo $error."</br>"
+                                            ?>
                                             <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
                                         </div>
 

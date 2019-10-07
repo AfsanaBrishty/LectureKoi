@@ -1,3 +1,38 @@
+<?php
+    include ("custom_functions.php");
+
+
+    if(isset($_POST['submit']))
+    {
+        include ("config.php");
+
+        $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
+
+
+        $name=$_POST['name'];
+        $from=$_POST['email'];
+        $subject=$_POST['subject'];
+        $message=$_POST['message'];
+
+
+
+        $query = "INSERT INTO contact_us(name,from_email,subject,message) 
+                   VALUES ('$name','$from','$subject','$message')";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+           // $error="data inserted successfully";
+            phpalert('Data inserted successfully');
+        } else {
+            //$error="data insertion failed";
+            phpalert('Data insertion failed');
+
+            unset($_POST['submit']);
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +66,11 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="#">home</a></li>
-						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="#">lectures</a></li>
-						<li class="main_nav_item"><a href="#">Sign In</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
+                        <li class="main_nav_item"><a href="#">Sign In</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -64,11 +99,11 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="main_nav_item"><a href="#">home</a></li>
-					<li class="main_nav_item"><a href="#">about us</a></li>
-					<li class="main_nav_item"><a href="#">lectures</a></li>
-					<li class="main_nav_item"><a href="#">Sign In</a></li>
-					<li class="main_nav_item"><a href="contact.html">contact</a></li>
+                    <li class="main_nav_item"><a href="index.php">home</a></li>
+                    <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                    <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
+                    <li class="main_nav_item"><a href="#">Sign In</a></li>
+                    <li class="main_nav_item"><a href="contact.php">contact</a></li>
 				</ul>
 
 				<!-- Menu Social -->
@@ -113,11 +148,12 @@
 						<div class="contact_title">Get in touch</div>
 
 						<div class="contact_form_container">
-							<form action="post">
-								<input id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-								<input id="contact_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-								<button id="contact_send_btn" type="button" class="contact_send_btn trans_200" value="Submit">send message</button>
+							<form   action ="contact.php" method="POST" enctype="multipart/form-data">
+								<input  class="input_field contact_form_name" type="text" name="name" placeholder="Name" required="required" data-error="Name is required.">
+								<input  class="input_field contact_form_email" type="email" name="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
+                                <input  class="input_field contact_form_email" type="text" name="subject" placeholder="Subject" required="required" data-error="Valid subject is required.">
+                                <textarea class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+								<input type="submit" name="submit" class="btn btn-primary" value="Submit" >
 							</form>
 						</div>
 					</div>
@@ -126,14 +162,14 @@
 
 				<div class="col-lg-4">
 					<div class="about">
-						<div class="about_title">Join Courses</div>
-						<p class="about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies. Etiam eu purus nec eros varius luctus.</p>
+						<div class="about_title">Contribute in LectureKoi</div>
+						<p class="about_text"> If you wanna contribute in lecturekoi</p>
 
 						<div class="contact_info">
 							<ul>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
-										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										<img src="images/placeholder.svg" alt="">
 									</div>
 									Blvd Libertad, 34 m05200 Arévalo
 								</li>

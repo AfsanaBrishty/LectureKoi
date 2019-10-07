@@ -1,18 +1,37 @@
 <?php
 
-include ("custom_functions.php");
+        $session_list = array("spring 17", "fall 17", "spring 18","fall 18","spring 19","fall 19","spring 20","fall 20");
 
-    $varsity_name = $_GET["varsity_name"];
-    $dept_name = $_GET["dept_name"];
-   // echo $varsity_name."<br>";
-   // echo $dept_name."<br>";
+
+
+        $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
+        // The nested array to hold all the arrays
+        $lectures_holder = [];
+
+        $sql="SELECT studentId,department,fileurl,video_url,message FROM lectureupload WHERE session='1701' ";
+
+
+        if ($result=mysqli_query($con,$sql))
+        {
+            // Fetch one and one row
+            while ($row=mysqli_fetch_row($result))
+            {
+                // printf ("%s (%s)\n",$row[0],$row[1]);
+                $lectures_holder[]=$row;
+            }
+            // Free result set
+            mysqli_free_result($result);
+        }
+        mysqli_close($con);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LectureKoi-Semester</title>
+    <title>LectureKoi-Lectures</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -109,93 +128,49 @@ include ("custom_functions.php");
             <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Semester</h1>
+            <h1>Sessions</h1>
         </div>
     </div>
 
-
-
-    <!-- select semester -->
 
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="section_title text-center">
-                    <h1>Select Semester</h1>
+                    <h1>Click the following box to download the lectures from google drive link</h1>
                 </div>
             </div>
         </div>
         <div class="row">
 
             <div class="col-lg-12 hero_box_col">
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_download.php?semester=1 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>                    </div>
-                </div>
+
+                <?php
+                for($i = 0; $i < count($session_list); $i++) {
+                    echo "<br>";
+                 //   foreach ($lectures_holder as $value) :
+                        ?>
+
+-->
+
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <img src="images/university.png" alt="">
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title"> <?php echo $session_list[$i]; ?> </h2>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
 
 
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_download.php?semester=2 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_download.php?semester=3 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">2nd year 1st semester</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_download.php?semester=4 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">2nd year 2nd semester</h2></a>
-                    </div>
-                </div>
+                    <?php //  endforeach   ?>
+                <?php  }   ?>
 
 
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
 
-                        <?php $link = "lectures_download.php?semester=5 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">3rd year 1st semester</h2></a>
-                    </div>
-                </div>
 
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
 
-                        <?php $link = "lectures_download.php?semester=6 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">3rd year 2nd semester</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-
-                        <?php $link = "lectures_download.php?semester=7 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">4 th year 1st semester</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-
-                        <?php $link = "lectures_download.php?semester=8 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">4 th year 2nd semester</h2></a>
-                    </div>
-                </div>
 
 
 
@@ -203,13 +178,8 @@ include ("custom_functions.php");
 
             </div>
 
-
         </div>
-
     </div>
-
-
-
 
 
 
@@ -239,7 +209,7 @@ include ("custom_functions.php");
         </div>
     </footer>
 
- </div>
+</div>
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>

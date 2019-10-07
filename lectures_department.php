@@ -1,8 +1,5 @@
 <?php
 
-include ("custom_functions.php");
-
-setVarsityName($_GET['varsity_name']);
 
 ?>
 
@@ -127,7 +124,8 @@ setVarsityName($_GET['varsity_name']);
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.php?dept_name=cse" > <h2 class="hero_box_title">CSE</h2></a>
+                        <?php $link = "lectures_semester.php?dept_name=cse&varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">CSE</h2></a>
                     </div>
                 </div>
 
@@ -135,7 +133,8 @@ setVarsityName($_GET['varsity_name']);
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.php?dept_name=eee" > <h2 class="hero_box_title">EEE</h2></a>
+                        <?php $link = "lectures_semester.php?dept_name=eee&varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">EEE</h2></a>
 
                     </div>
                 </div>
@@ -143,16 +142,16 @@ setVarsityName($_GET['varsity_name']);
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.php?dept_name=mechanical" > <h2 class="hero_box_title">Mechanical</h2></a>
-
+                        <?php $link = "lectures_semester.php?dept_name=me & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Mechanical</h2></a>
                     </div>
                 </div>
 
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_semester.php?dept_name=civil" > <h2 class="hero_box_title">Civil</h2></a>
-
+                        <?php $link = "lectures_semester.php?dept_name=civil & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Civil</h2></a>
                     </div>
                 </div>
 
@@ -161,8 +160,8 @@ setVarsityName($_GET['varsity_name']);
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_semester.php?dept_name=ipe" > <h2 class="hero_box_title">IPE</h2></a>
-
+                        <?php $link = "lectures_semester.php?dept_name=ipe &varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">IPE</h2></a>
                     </div>
                 </div>
 
@@ -170,8 +169,8 @@ setVarsityName($_GET['varsity_name']);
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_semester.php?dept_name=textile" > <h2 class="hero_box_title">Textiles</h2></a>
-
+                        <?php $link = "lectures_semester.php?dept_name=te & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Textile</h2></a>
                     </div>
                 </div>
 
