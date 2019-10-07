@@ -1,7 +1,9 @@
 <?php
-
-
-include 'Config.php';
+if(isset($_POST['logout']))
+  {
+    header("location: Logout.php");
+	  
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +17,5 @@ include 'Config.php';
    <br>
    <input name="logout" type="submit" id="button" value="Log-Out"></input>
    </form>
-   
-  
-
 </body>
 </html>
