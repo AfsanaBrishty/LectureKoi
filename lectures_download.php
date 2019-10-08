@@ -1,4 +1,8 @@
 <?php
+        $varsity_name = $_GET["varsity_name"];
+        $dept_name = $_GET["dept_name"];
+        $semester = $_GET["semester"];
+
 
 
         $session_list = array("spring 17"=>"1701", "fall 17"=>"1702", "spring 18"=>"1801","fall 18"=>"1802","spring 19"=>"1901","fall 19"=>"1902",
@@ -7,13 +11,16 @@
 
         function fetch_download_info($x_value)
         {
+            global $varsity_name,$dept_name,$semester;
+
             $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
             // The nested array to hold all the arrays
             $lectures_holder = [];
 
 
-            $sql = "SELECT department,fileurl,video_url,message FROM lectureupload WHERE session='".$x_value."' ";
+            $sql = "SELECT department,fileurl,video_url,message FROM lectureupload WHERE session='".$x_value."' AND varsity_name='".$varsity_name."' 
+                    AND department='".$dept_name."' AND semester='".$semester."' ";
 
             if ($result=mysqli_query($con,$sql))
             {
@@ -21,7 +28,7 @@
                 while ($row=mysqli_fetch_row($result))
                 {
                     // printf ("%s (%s)\n",$row[0],$row[1]);
-                    $lectures_holder[]=$row;
+                    $lectures_holder=$row;
                 }
                 // Free result set
                 mysqli_free_result($result);
@@ -155,30 +162,37 @@
             <div class="col-lg-12 hero_box_col">
 
                 <?php
-                foreach($session_list as $x => $x_value)
-                {
-                    echo "<br>";
+                foreach($session_list as $x => $x_value) {
+
+                    $lectures_holder = fetch_download_info($x_value);
+
                         ?>
                         <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                             <img src="images/university.png" alt="">
                             <div class="hero_box_content">
                                 <h2 class="hero_box_title"> <?php echo $x; ?> </h2>
                                 <div>
-                                    <?php
-                                        $lectures_holder[]=fetch_download_info($x_value);
-                                        echo print_r($lectures_holder);
-                                    ?>
-                                        <h3><?php// echo  $value[0] ?></h3>
-                                        <h4><?php //echo  $value[1] ?></h4>
-                                        <h4><?php// echo  $value[2] ?></h4>
-                                        <p><?php //echo  $value[3] ?></p>
+                                        <?php  if (!empty($lectures_holder)) {
+                                            $lec_link = $lectures_holder[1];
+                                            $video_link = $lectures_holder[2];
+                                                ?>
+                                             <a href="<?php echo $lec_link ?>"><?php echo "Department: ". $lectures_holder[0] ?></a><br>
+                                            <a href="<?php echo $lec_link ?>">Lecture Link </a>
+                                            <?php  if (!empty($video_link)) { ?>
+                                            <a href="<?php echo  $video_link ?>">Video Link</a>
+                                            <?php } ?>
+                                            <?php  if (!empty( $lectures_holder[3])) { ?>
+                                            <p><?php echo $lectures_holder[3] ?></p>
+                                            <?php } ?>
 
-
+                                            <?php }?>
                                 </div>
                             </div>
                         </div>
 
-                <?php  }   ?>
+
+                    <?php }
+                    ?>
 
 
 

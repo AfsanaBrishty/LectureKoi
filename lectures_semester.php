@@ -1,13 +1,4 @@
-<?php
 
-include ("custom_functions.php");
-
-    $varsity_name = $_GET["varsity_name"];
-    $dept_name = $_GET["dept_name"];
-   // echo $varsity_name."<br>";
-   // echo $dept_name."<br>";
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">

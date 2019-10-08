@@ -142,7 +142,7 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <?php $link = "lectures_semester.php?dept_name=me & varsity_name=".$_GET["varsity_name"]; ?>
+                        <?php $link = "lectures_semester.php?dept_name=mechanical & varsity_name=".$_GET["varsity_name"]; ?>
                         <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Mechanical</h2></a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <?php $link = "lectures_semester.php?dept_name=te & varsity_name=".$_GET["varsity_name"]; ?>
+                        <?php $link = "lectures_semester.php?dept_name=textile & varsity_name=".$_GET["varsity_name"]; ?>
                         <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Textile</h2></a>
                     </div>
                 </div>

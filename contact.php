@@ -46,6 +46,23 @@
 <link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 </head>
+
+<style>
+
+    .map-container{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    .map-container iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+    }
+</style>
 <body>
 
 <div class="super_container">
@@ -163,7 +180,8 @@
 				<div class="col-lg-4">
 					<div class="about">
 						<div class="about_title">Contribute in LectureKoi</div>
-						<p class="about_text"> If you wanna contribute in lecturekoi</p>
+						<p class="about_text"> If you face any problems downloading/uploading the lectures, have any suggestions to improve any of our
+                                                systems you can contact us .</p>
 
 						<div class="contact_info">
 							<ul>
@@ -171,18 +189,18 @@
 									<div class="contact_info_icon">
 										<img src="images/placeholder.svg" alt="">
 									</div>
-									Blvd Libertad, 34 m05200 Arévalo
+									Niketon 205/4 Road no. 8 Block C
 								</li>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
 										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
 									</div>
-									0034 37483 2445 322
+									01535155114
 								</li>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
 										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>hello@company.com
+									</div>sajidahmed696@gmail.com
 								</li>
 							</ul>
 						</div>
@@ -192,25 +210,13 @@
 
 			</div>
 
-			<!-- Google Map -->
 
-			<div class="row">
-				<div class="col">
-					<div id="google_map">
-						<div class="map_container">
-							<div id="map"  class="z-depth-1-half map-container-3">
-								<iframe src="https://maps.google.com/maps?q=warsaw&t=k&z=13&ie=UTF8&iwloc=&output=embed" style="border:0" allowfullscreen>
+            <!--Google map-->
+            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px;width: 100% ;">
+                <iframe src="https://www.google.com/maps/@23.7733246,90.4068246,16z" frameborder="0"
+                        style="border:0" allowfullscreen></iframe>
+            </div>
 
-								</iframe>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
 
 	<!-- Footer -->
 
