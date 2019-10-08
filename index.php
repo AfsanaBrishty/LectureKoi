@@ -42,11 +42,11 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
-						<li class="main_nav_item"><a href="contributors.html">about us</a></li>
-						<li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+						<li class="main_nav_item"><a href="index.php">home</a></li>
+						<li class="main_nav_item"><a href="contributors.php">about us</a></li>
+						<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 						<li class="main_nav_item"><a href="#">Sign In</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
+						<li class="main_nav_item"><a href="contact.php">contact</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -72,11 +72,11 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="main_nav_item"><a href="index.html">home</a></li>
-					<li class="main_nav_item"><a href="contributors.html">about us</a></li>
-					<li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+					<li class="main_nav_item"><a href="index.php">home</a></li>
+					<li class="main_nav_item"><a href="contributors.php">about us</a></li>
+					<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 					<li class="main_nav_item"><a href="#">Sign In</a></li>
-					<li class="main_nav_item"><a href="contact.html">contact</a></li>
+					<li class="main_nav_item"><a href="contact.php">contact</a></li>
 				</ul>
 
 				<!-- Menu Social -->
@@ -105,7 +105,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/high-tech.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -115,7 +115,7 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/high-tech_1.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
@@ -125,13 +125,15 @@
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/high-tech_2.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
 							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
 						</div>
 					</div>
 				</div>
+
+
 
 			</div>
 
@@ -147,29 +149,32 @@
 				<div class="row">
 
 
+              <a href="lecture_upload.php" >
 				<div class="col-lg-6 hero_box_col">
-					<a href="lectures.html" >
+
 						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
 							<img src="images/university.png"  alt="">
 							<div class="hero_box_content">
-								<h2 class="hero_box_title">Collaborated Universities</h2>
-								<a href="lectures.html" class="hero_box_link">view more</a>
+								<h2 class="hero_box_title">Upload the lectures</h2>
+								<a href="lecture_upload.php" class="hero_box_link">view more</a>
 							</div>
 						</div>
-					</a>
+
 				</div>
+              </a>
 
 
-
+               <a href="contributors.php" >
 					<div class="col-lg-6 hero_box_col">
 						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
 							<img src="images/professor.svg" class="svg" alt="">
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">Our Contributors</h2>
-								<a href="contributors.html" class="hero_box_link">view more</a>
+								<a href="contributors.php" class="hero_box_link">view more</a>
 							</div>
 						</div>
 					</div>
+               </a>
 
 
 
@@ -220,7 +225,7 @@
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
 							<div class="course_author_image">
-								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
+								<img src="images/author.jpg" alt="">
 							</div>
 							<div class="course_author_name">Michael Smith, <span>Author</span></div>
 							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
@@ -329,7 +334,7 @@
 						<img src="images/exam.svg" alt="">
 					</div>
 					<h3>Online Courses</h3>
-					<p>nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+					<p>This section is not activated yet.But in future we will have amazing tutorials on the lectures</p>
 				</div>
 
 			</div>

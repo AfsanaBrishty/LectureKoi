@@ -1,3 +1,48 @@
+<?php
+        $varsity_name = $_GET["varsity_name"];
+        $dept_name = $_GET["dept_name"];
+        $semester = $_GET["semester"];
+
+
+
+        $session_list = array("spring 17"=>"1701", "fall 17"=>"1702", "spring 18"=>"1801","fall 18"=>"1802","spring 19"=>"1901","fall 19"=>"1902",
+                        "spring 20"=>"2001","fall 20"=>"2002");
+
+
+        function fetch_download_info($x_value)
+        {
+            global $varsity_name,$dept_name,$semester;
+
+            $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
+            // The nested array to hold all the arrays
+            $lectures_holder = [];
+
+
+            $sql = "SELECT department,fileurl,video_url,message FROM lectureupload WHERE session='".$x_value."' AND varsity_name='".$varsity_name."' 
+                    AND department='".$dept_name."' AND semester='".$semester."' ";
+
+            if ($result=mysqli_query($con,$sql))
+            {
+                // Fetch one and one row
+                while ($row=mysqli_fetch_row($result))
+                {
+                    // printf ("%s (%s)\n",$row[0],$row[1]);
+                    $lectures_holder=$row;
+                }
+                // Free result set
+                mysqli_free_result($result);
+            }
+            mysqli_close($con);
+
+
+            return $lectures_holder;
+        }
+
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +86,11 @@
             <nav class="main_nav_container">
                 <div class="main_nav">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="index.html">home</a></li>
-                        <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                        <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="#">Sign In</a></li>
-                        <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
                     </ul>
                 </div>
             </nav>
@@ -71,11 +116,11 @@
         <div class="menu_inner menu_mm">
             <div class="menu menu_mm">
                 <ul class="menu_list menu_mm">
-                    <li class="main_nav_item"><a href="index.html">home</a></li>
-                    <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                    <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                    <li class="main_nav_item"><a href="index.php">home</a></li>
+                    <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                    <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                     <li class="main_nav_item"><a href="#">Sign In</a></li>
-                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                    <li class="main_nav_item"><a href="contact.php">contact</a></li>
                 </ul>
 
                 <!-- Menu Social -->
@@ -96,10 +141,65 @@
 
     <div class="home">
         <div class="home_background_container prlx_parent">
-            <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
+            <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Lectures</h1>
+            <h1>Sessions</h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>Download the lectures from google drive link</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-12 hero_box_col">
+
+                <?php
+                foreach($session_list as $x => $x_value) {
+
+                    $lectures_holder = fetch_download_info($x_value);
+
+                        ?>
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <img src="images/university.png" alt="">
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title"> <?php echo $x; ?> </h2>
+                                <div>
+                                        <?php  if (!empty($lectures_holder)) {
+                                            $lec_link = $lectures_holder[1];
+                                            $video_link = $lectures_holder[2];
+                                                ?>
+                                             <a href="<?php echo $lec_link ?>"><?php echo "Department: ". $lectures_holder[0] ?></a><br>
+                                            <a href="<?php echo $lec_link ?>">Lecture Link </a>
+                                            <?php  if (!empty($video_link)) { ?>
+                                            <a href="<?php echo  $video_link ?>">Video Link</a>
+                                            <?php } ?>
+                                            <?php  if (!empty( $lectures_holder[3])) { ?>
+                                            <p><?php echo $lectures_holder[3] ?></p>
+                                            <?php } ?>
+
+                                            <?php }?>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <?php }
+                    ?>
+
+
+
+
+
+            </div>
+
         </div>
     </div>
 

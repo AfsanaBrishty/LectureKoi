@@ -31,11 +31,11 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
-						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+						<li class="main_nav_item"><a href="index.php">home</a></li>
+						<li class="main_nav_item"><a href="contributors.php">about us</a></li>
+						<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 						<li class="main_nav_item"><a href="#">Sign In</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
+						<li class="main_nav_item"><a href="contact.php">contact</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -61,11 +61,11 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="main_nav_item"><a href="index.html">home</a></li>
-					<li class="main_nav_item"><a href="#">about us</a></li>
-					<li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+					<li class="main_nav_item"><a href="index.php">home</a></li>
+					<li class="main_nav_item"><a href="contributors.php">about us</a></li>
+					<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 					<li class="main_nav_item"><a href="#">Sign In</a></li>
-					<li class="main_nav_item"><a href="contact.html">contact</a></li>
+					<li class="main_nav_item"><a href="contact.php">contact</a></li>
 				</ul>
 
 				<!-- Menu Social -->
@@ -112,13 +112,16 @@
 
 			<div class="row course_boxes">
 				
-				<!-- Popular Universities Item -->
+				<!-- Popular Universities  -->
 				<div class="col-lg-4 course_box">
 					<div class="card">
+
 						<!-- all the images must be 690 X 520 resolution -->
+
+
 						<img class="card-img-top" src="images/varsity/aust.jpg" alt="" >
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">AUST</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=aust">AUST</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -131,12 +134,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/Buet.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">BUET</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=buet">BUET</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -149,12 +152,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/CUET.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">CUET</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=cuet">CUET</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -167,12 +170,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/kuet.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">KUET</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=kuet">KUET</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -185,12 +188,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/JU.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">Jahangirnagar University</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=ju">Jahangirnagar University</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -203,12 +206,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/DU.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">Dhaka University</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=du">Dhaka University</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -221,12 +224,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/DMC.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="lectures_department.html">Dhaka Medical</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=dmc">Dhaka Medical</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
@@ -239,12 +242,12 @@
 					</div>
 				</div>
 
-				<!-- Popular Course Item -->
+
 				<div class="col-lg-4 course_box">
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/ruet.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="#">RUET</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=ruet">RUET</a></div>
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
 							<div class="course_author_image">
@@ -261,7 +264,7 @@
 					<div class="card">
 						<img class="card-img-top" src="images/varsity/SUST.jpg" alt="">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="#">SUST</a></div>
+							<div class="card-title"><a href="lectures_department.php?varsity_name=sust">SUST</a></div>
 
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">

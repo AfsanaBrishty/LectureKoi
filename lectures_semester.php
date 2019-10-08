@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LectureKoi-Lectures</title>
+    <title>LectureKoi-Semester</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -40,11 +42,11 @@
             <nav class="main_nav_container">
                 <div class="main_nav">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="index.html">home</a></li>
-                        <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                        <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                        <li class="main_nav_item"><a href="index.php">home</a></li>
+                        <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                        <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="#">Sign In</a></li>
-                        <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                        <li class="main_nav_item"><a href="contact.php">contact</a></li>
                     </ul>
                 </div>
             </nav>
@@ -70,11 +72,11 @@
         <div class="menu_inner menu_mm">
             <div class="menu menu_mm">
                 <ul class="menu_list menu_mm">
-                    <li class="main_nav_item"><a href="index.html">home</a></li>
-                    <li class="main_nav_item"><a href="contributors.html">about us</a></li>
-                    <li class="main_nav_item"><a href="lectures.html">lectures</a></li>
+                    <li class="main_nav_item"><a href="index.php">home</a></li>
+                    <li class="main_nav_item"><a href="contributors.php">about us</a></li>
+                    <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                     <li class="main_nav_item"><a href="#">Sign In</a></li>
-                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                    <li class="main_nav_item"><a href="contact.php">contact</a></li>
                 </ul>
 
                 <!-- Menu Social -->
@@ -98,9 +100,10 @@
             <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Lectures</h1>
+            <h1>Semester</h1>
         </div>
     </div>
+
 
 
     <!-- select semester -->
@@ -119,7 +122,32 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">1st year 1st semester</h2></a>
+                        <?php $link = "lectures_download.php?semester=1 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>                    </div>
+                </div>
+
+
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                    <img src="images/university.png"  alt="">
+                    <div class="hero_box_content">
+                        <?php $link = "lectures_download.php?semester=2 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>
+                    </div>
+                </div>
+
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                    <img src="images/university.png"  alt="">
+                    <div class="hero_box_content">
+                        <?php $link = "lectures_download.php?semester=3 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">2nd year 1st semester</h2></a>
+                    </div>
+                </div>
+
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                    <img src="images/university.png"  alt="">
+                    <div class="hero_box_content">
+                        <?php $link = "lectures_download.php?semester=4 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">2nd year 2nd semester</h2></a>
                     </div>
                 </div>
 
@@ -127,34 +155,9 @@
                 <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>
 
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">2nd year 1st semester</h2></a>
-
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">2nd year 2nd semester</h2></a>
-
-                    </div>
-                </div>
-
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">3rd year 1st semester</h2></a>
-
+                        <?php $link = "lectures_download.php?semester=5 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">3rd year 1st semester</h2></a>
                     </div>
                 </div>
 
@@ -162,8 +165,8 @@
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">3rd year 2nd semester</h2></a>
-
+                        <?php $link = "lectures_download.php?semester=6 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">3rd year 2nd semester</h2></a>
                     </div>
                 </div>
 
@@ -171,8 +174,8 @@
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">4th year 1st semester</h2></a>
-
+                        <?php $link = "lectures_download.php?semester=7 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">4 th year 1st semester</h2></a>
                     </div>
                 </div>
 
@@ -180,8 +183,8 @@
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
 
-                        <a href="lectures_theory_lab.html" > <h2 class="hero_box_title">4th year 2nd semester</h2></a>
-
+                        <?php $link = "lectures_download.php?semester=8 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">4 th year 2nd semester</h2></a>
                     </div>
                 </div>
 
