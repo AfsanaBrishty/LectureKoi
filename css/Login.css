@@ -1,0 +1,62 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.SignIn_background{
+	background-image: url('../images/backgroundimage1.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+    }
+.card
+{
+  background-color: rgba(245, 245, 245, 0.1) !important;
+  
+}
+.btn-primary{
+  background: #1ab188;
+  border: 0px;
+  border-radius: 0px;
+  margin-top: 1%;
+  width:35%;
+}
+.btn-default{
+  background: #435259;
+  border: 0px;
+  border-radius: 0px;	
+  margin-top: 1%;
+  width:35%;
+}
+.btn-info{
+  background: #1ab188;
+  border-radius: 0px;
+  border: 0px;
+  margin-top:4%;
+  width:70%;
+}
+.btn-primary:hover{
+  background: #1ab188;
+}
+.btn-default:hover{
+  background: #1ab188;
+}
+.btn-info:hover{
+  background: transparent;
+  border: 2px solid #1ab188;
+}
+img.img-responsive{
+  width: 100%;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+h1{
+  color: white;
+}
+.form-control{
+  background: transparent;
+  border-radius: 0 px;
+  color: white;
+  margin-top: 3%;
+}
