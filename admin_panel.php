@@ -1,4 +1,7 @@
+
 <?php
+        include ("custom_functions.php");
+
 
         $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
@@ -8,7 +11,7 @@
         $big_contact_array=[];
 
         $sql="SELECT studentId,varsity_name,department,semester,session ,fileurl,video_url,message,status FROM lectureupload_crowd_source_system ";
-        $sql_1="SELECT studentId,varsity_name,department,semester,session ,fileurl,video_url,message,status FROM lectureupload ";
+        $sql_1="SELECT studentId,varsity_name,department,semester,session ,fileurl,video_url,message FROM lectureupload ";
         $sql_2="SELECT name,from_email,subject,message FROM contact_us";
 
         if ($result=mysqli_query($con,$sql))
@@ -96,6 +99,10 @@
             color: red;
         }
 
+        .table-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
     </style>
 
 </head>
@@ -183,7 +190,7 @@
 
 
     <h1 class="text-center m-5 ">All Lecture Upload Requests </h1>
-    <div class="table100 ver6 m-b-110">
+    <div class="table100 ver6 m-b-110 table-wrapper">
         <table data-vertable="ver6" id="table1" class="display" >
             <thead>
             <tr class="row100 head">
@@ -192,10 +199,11 @@
                 <th class="column100 column3" data-column="column3">Varsity Name</th>
                 <th class="column100 column4" data-column="column4">Department</th>
                 <th class="column100 column5" data-column="column5">Semester</th>
-                <th class="column100 column6" data-column="column6">FileUrl</th>
-                <th class="column100 column7" data-column="column7">Video Url</th>
-                <th class="column100 column8" data-column="column8">Message</th>
-                <th class="column100 column9" data-column="column9">Status</th>
+                <th class="column100 column6" data-column="column6">Session</th>
+                <th class="column100 column7" data-column="column7">FileUrl</th>
+                <th class="column100 column8" data-column="column8">Video Url</th>
+                <th class="column100 column9" data-column="column9">Message</th>
+                <th class="column100 column10" data-column="column10">Status</th>
 
 
             </tr>
@@ -216,6 +224,8 @@
                     <td class="column100 column7" data-column="column7"><?php echo $value[5]; ?></td>
                     <td class="column100 column8" data-column="column8"><?php echo $value[6]; ?></td>
                     <td class="column100 column9" data-column="column9"><?php echo $value[7]; ?></td>
+                    <td class="column100 column10" data-column="column10"><?php echo $value[8]; ?></td>
+
 
                 </tr>
             <?php endforeach; ?>
@@ -226,33 +236,10 @@
         </table>
     </div>
 
-    <form action ="" method="POST" enctype="multipart/form-data">
 
-                <label>Student Id</label>
-                <input type="text" id="id_" class="form-control"  required="required" data-error="Please fillup this field" />
-
-                <label>Varsity Name</label>
-                <input type="text" id="varsity_" class="form-control" required="required" data-error="Please fillup this field" />
-
-                <label>Department</label>
-                <input type="text" id="department_" class="form-control"  required="required" data-error="Please fillup this field" />
-
-                <label>Semester</label>
-                <input type="text" id="semester_" class="form-control" required="required" data-error="Please fillup this field" />
-
-                <label>FileUrl</label>
-                <input type="text" id="fileurl_" class="form-control" required="required" data-error="Please fillup this field" />
-
-                <label>Video Url</label>
-                <input type="text" id="videourl_" class="form-control" required="required" data-error="Please fillup this field" />
-
-                <label>Message</label>
-                <input type="text" id="message_" class="form-control" required="required" data-error="Please fillup this field" />
-
-    </form>
 
     <h1 class="text-center m-5 ">All Approved Lectures </h1>
-    <div class="table100 ver6 m-b-110">
+    <div class="table100 ver6 m-b-110 table-wrapper">
         <table data-vertable="ver6" id="table2">
             <thead>
             <tr class="row100 head">
@@ -261,9 +248,10 @@
                 <th class="column100 column3" data-column="column3">Varsity Name</th>
                 <th class="column100 column4" data-column="column4">Department</th>
                 <th class="column100 column5" data-column="column5">Semester</th>
-                <th class="column100 column6" data-column="column6">FileUrl</th>
-                <th class="column100 column7" data-column="column7">Video Url</th>
-                <th class="column100 column8" data-column="column8">Message</th>
+                <th class="column100 column6" data-column="column6">Session</th>
+                <th class="column100 column7" data-column="column7">FileUrl</th>
+                <th class="column100 column8" data-column="column8">Video Url</th>
+                <th class="column100 column9" data-column="column9">Message</th>
 
             </tr>
             </thead>
@@ -282,6 +270,8 @@
                     <td class="column100 column6" data-column="column6"><?php echo $value[4]; ?></td>
                     <td class="column100 column7" data-column="column7"><?php echo $value[5]; ?></td>
                     <td class="column100 column8" data-column="column8"><?php echo $value[6]; ?></td>
+                    <td class="column100 column9" data-column="column9"><?php echo $value[7]; ?></td>
+
                 </tr>
             <?php endforeach; ?>
 
@@ -340,7 +330,7 @@
 
             <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
                 <div class="footer_copyright">
-					<span>
+					<span style="color: aliceblue">
 						Copyright @Sajid Ahmed
 					</span>
                 </div>
@@ -382,9 +372,9 @@
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
-</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 <script>
 
@@ -396,8 +386,20 @@
             row.push($(v).text());
         })
 
-        // $('#selectedRows').val(row);
+        $('#selectedRows').val(row);
         //alert(row);
+        //window.location.href = "admin_panel.php";
+        $.ajax({
+            type: "POST",
+            url: "admin_panel.php",
+            data: {
+                myselectedrow: row
+            },
+            success: function(data){
+                alert(row);
+                // window.location.href = "admin_panel.php";
+            }
+        });
 
     });
 
@@ -409,8 +411,8 @@
             row.push($(v).text());
         })
 
-        // $('#selectedRows').val(row);
-        //alert(row);
+        $('#selectedRows').val(row);
+//        alert(row);
 
     });
 
@@ -423,5 +425,27 @@
 
 </script>
 
+</body>
+
+
+
 
 </html>
+<?php
+/*
+        if(isset($_POST['myselectedrow']))
+        {
+            $row=$_POST['myselectedrow'];
+            echo $row;
+           // phpalert("hehe");
+        }
+        else
+        {
+            phpalert("mara khao");
+        }
+*/
+
+    echo $_POST['myselectedrow'];
+?>
+
+

@@ -1,9 +1,4 @@
 
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-
 @font-face {
   font-family: Montserrat-Regular;
   src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
@@ -147,10 +142,6 @@ th, td {
   padding-top: 18px;
   padding-bottom: 14px;
 }
-
-
-/*==================================================================
-[ Ver1 ]*/
 .table100.ver1 td {
   font-family: Montserrat-Regular;
   font-size: 14px;
@@ -184,9 +175,6 @@ th, td {
   background-color: #6c7ae0;
   color: #fff;
 }
-
-/*==================================================================
-[ Ver2 ]*/
 .table100.ver2 td {
   font-family: Montserrat-Regular;
   font-size: 14px;
