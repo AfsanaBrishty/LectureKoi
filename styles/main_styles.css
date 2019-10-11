@@ -742,6 +742,7 @@ section
 	background: #1a1a1a;
 	margin-bottom: 50px;
 	cursor: pointer;
+	padding: 20px;
 }
 .hero_box:hover
 {

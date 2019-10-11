@@ -71,22 +71,7 @@
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <!--===============================================================================================-->
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -94,15 +79,33 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
-    <style>
-        .selected {
-            color: red;
-        }
 
-        .table-wrapper {
-            overflow-x: auto;
-            overflow-y: hidden;
+    <style>
+
+
+        #table1 th, td {
+            white-space: nowrap;
         }
+        #table2 th, td {
+            white-space: nowrap;
+        }
+        #table3 th, td {
+            white-space: nowrap;
+        }
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_asc_disabled:after,
+        table.dataTable thead .sorting_asc_disabled:before,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting_desc:before,
+        table.dataTable thead .sorting_desc_disabled:after,
+        table.dataTable thead .sorting_desc_disabled:before {
+            bottom: .5em;
+
+
+
     </style>
 
 </head>
@@ -190,23 +193,21 @@
 
 
     <h1 class="text-center m-5 ">All Lecture Upload Requests </h1>
-    <div class="table100 ver6 m-b-110 table-wrapper">
-        <table data-vertable="ver6" id="table1" class="display" >
+    <div class="table-responsive" style="height: 300px">
+        <table id="table1" class="table table-dark table-striped table-bordered"  >
             <thead>
-            <tr class="row100 head">
-                <th class="column100 column1" data-column="column1">Serial No.</th>
-                <th class="column100 column2" data-column="column2">Student Id</th>
-                <th class="column100 column3" data-column="column3">Varsity Name</th>
-                <th class="column100 column4" data-column="column4">Department</th>
-                <th class="column100 column5" data-column="column5">Semester</th>
-                <th class="column100 column6" data-column="column6">Session</th>
-                <th class="column100 column7" data-column="column7">FileUrl</th>
-                <th class="column100 column8" data-column="column8">Video Url</th>
-                <th class="column100 column9" data-column="column9">Message</th>
-                <th class="column100 column10" data-column="column10">Status</th>
-
-
-            </tr>
+                <tr>
+                    <th scope="col">Serial No.</th>
+                    <th scope="col">Student Id</th>
+                    <th scope="col">Varsity Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Session</th>
+                    <th scope="col">FileUrl</th>
+                    <th scope="col">Video Url</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Status</th>
+                </tr>
             </thead>
             <tbody>
 
@@ -214,18 +215,21 @@
             $i = 1;
             foreach ($the_big_array as  $value) :
                 ?>
-                <tr class="row100">
-                    <td class="column100 column1" data-column="column1"><?php echo $i++; ?></td>
-                    <td class="column100 column2" data-column="column2"><?php echo $value[0]; ?></td>
-                    <td class="column100 column3" data-column="column3"><?php echo $value[1]; ?></td>
-                    <td class="column100 column4" data-column="column4"><?php echo $value[2]; ?></td>
-                    <td class="column100 column5" data-column="column5"><?php echo $value[3]; ?></td>
-                    <td class="column100 column6" data-column="column6"><?php echo $value[4]; ?></td>
-                    <td class="column100 column7" data-column="column7"><?php echo $value[5]; ?></td>
-                    <td class="column100 column8" data-column="column8"><?php echo $value[6]; ?></td>
-                    <td class="column100 column9" data-column="column9"><?php echo $value[7]; ?></td>
-                    <td class="column100 column10" data-column="column10"><?php echo $value[8]; ?></td>
-
+                <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $value[0]; ?></td>
+                    <td><?php echo $value[1]; ?></td>
+                    <td><?php echo $value[2]; ?></td>
+                    <td><?php echo $value[3]; ?></td>
+                    <td><?php echo $value[4]; ?></td>
+                    <td><?php echo $value[5]; ?></td>
+                    <td><?php echo $value[6]; ?></td>
+                    <td><?php echo $value[7]; ?></td>
+                    <td><?php echo $value[8]; ?></td>
+                    <td>
+                        <?php $link="approve.php?id=".$value[0]." & varsity_name=".$value[1]." & department=".$value[2]." & semester=".$value[3]." & session=".$value[4]." & fileurl=".$value[5]." & video_url=".$value[6]." & message=".$value[7]." & status=".$value[8]."" ?>
+                        <button class="btn btn-dark"><a href="<?php echo $link ?>">Approve</a></button>
+                    </td>
 
                 </tr>
             <?php endforeach; ?>
@@ -239,19 +243,19 @@
 
 
     <h1 class="text-center m-5 ">All Approved Lectures </h1>
-    <div class="table100 ver6 m-b-110 table-wrapper">
-        <table data-vertable="ver6" id="table2">
+    <div class="table-responsive" style="height: 300px">
+        <table class="table table-dark table-striped table-bordered" id="table2">
             <thead>
-            <tr class="row100 head">
-                <th class="column100 column1" data-column="column1">Serial No.</th>
-                <th class="column100 column2" data-column="column2">Student Id</th>
-                <th class="column100 column3" data-column="column3">Varsity Name</th>
-                <th class="column100 column4" data-column="column4">Department</th>
-                <th class="column100 column5" data-column="column5">Semester</th>
-                <th class="column100 column6" data-column="column6">Session</th>
-                <th class="column100 column7" data-column="column7">FileUrl</th>
-                <th class="column100 column8" data-column="column8">Video Url</th>
-                <th class="column100 column9" data-column="column9">Message</th>
+            <tr>
+                <th scope="col">Serial No.</th>
+                <th scope="col">Student Id</th>
+                <th scope="col">Varsity Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Session</th>
+                <th scope="col">FileUrl</th>
+                <th scope="col">Video Url</th>
+                <th scope="col">Message</th>
 
             </tr>
             </thead>
@@ -261,16 +265,20 @@
             $i = 1;
             foreach ($the_big_array1 as  $value) :
                 ?>
-                <tr class="row100">
-                    <td class="column100 column1" data-column="column1"><?php echo $i++; ?></td>
-                    <td class="column100 column2" data-column="column2"><?php echo $value[0]; ?></td>
-                    <td class="column100 column3" data-column="column3"><?php echo $value[1]; ?></td>
-                    <td class="column100 column4" data-column="column4"><?php echo $value[2]; ?></td>
-                    <td class="column100 column5" data-column="column5"><?php echo $value[3]; ?></td>
-                    <td class="column100 column6" data-column="column6"><?php echo $value[4]; ?></td>
-                    <td class="column100 column7" data-column="column7"><?php echo $value[5]; ?></td>
-                    <td class="column100 column8" data-column="column8"><?php echo $value[6]; ?></td>
-                    <td class="column100 column9" data-column="column9"><?php echo $value[7]; ?></td>
+                <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $value[0]; ?></td>
+                    <td><?php echo $value[1]; ?></td>
+                    <td><?php echo $value[2]; ?></td>
+                    <td><?php echo $value[3]; ?></td>
+                    <td><?php echo $value[4]; ?></td>
+                    <td><?php echo $value[5]; ?></td>
+                    <td><?php echo $value[6]; ?></td>
+                    <td><?php echo $value[7]; ?></td>
+
+                    <td>
+
+                    </td>
 
                 </tr>
             <?php endforeach; ?>
@@ -283,15 +291,15 @@
 
 
     <h1 class="text-center m-5 ">All User Contact Information  </h1>
-    <div class="table100 ver6 m-b-110">
-        <table data-vertable="ver6" id="table2">
+    <div class="table-responsive" style="height: 300px">
+        <table class="table table-dark table-striped table-bordered" id="table3">
             <thead>
-            <tr class="row100 head">
-                <th class="column100 column1" data-column="column1">Serial No.</th>
-                <th class="column100 column2" data-column="column2">Name</th>
-                <th class="column100 column3" data-column="column3">Email</th>
-                <th class="column100 column4" data-column="column4">Subject</th>
-                <th class="column100 column5" data-column="column5">Message</th>
+            <tr >
+                <th scope="col">Serial No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Message</th>
 
 
             </tr>
@@ -302,12 +310,12 @@
             $i = 1;
             foreach ($big_contact_array as  $value) :
                 ?>
-                <tr class="row100">
-                    <td class="column100 column1" data-column="column1"><?php echo $i++; ?></td>
-                    <td class="column100 column2" data-column="column2"><?php echo $value[0]; ?></td>
-                    <td class="column100 column3" data-column="column3"><?php echo $value[1]; ?></td>
-                    <td class="column100 column4" data-column="column4"><?php echo $value[2]; ?></td>
-                    <td class="column100 column5" data-column="column5"><?php echo $value[3]; ?></td>
+                <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $value[0]; ?></td>
+                    <td><?php echo $value[1]; ?></td>
+                    <td><?php echo $value[2]; ?></td>
+                    <td><?php echo $value[3]; ?></td>
 
                 </tr>
             <?php endforeach; ?>
@@ -361,23 +369,24 @@
 <script src="js/courses_custom.js"></script>
 
 
-
-
-<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<!-- DataTables CSS -->
+<link href="css/addons/datatables.min.css" rel="stylesheet">
+<!-- DataTables JS -->
+<script href="js/addons/datatables.min.js" rel="stylesheet"></script>
+
+<!-- DataTables Select CSS -->
+<link href="css/addons/datatables-select.min.css" rel="stylesheet">
+<!-- DataTables Select JS -->
+<script href="js/addons/datatables-select.min.js" rel="stylesheet"></script>
+
+
+
 
 <script>
-
+/*
     $('#table1 tr').click(function() {
 
         $(this).toggleClass('selected');
@@ -389,17 +398,7 @@
         $('#selectedRows').val(row);
         //alert(row);
         //window.location.href = "admin_panel.php";
-        $.ajax({
-            type: "POST",
-            url: "admin_panel.php",
-            data: {
-                myselectedrow: row
-            },
-            success: function(data){
-                alert(row);
-                // window.location.href = "admin_panel.php";
-            }
-        });
+
 
     });
 
@@ -415,37 +414,29 @@
 //        alert(row);
 
     });
-
-
-
-    $(document).ready(function() {
-        $('#table1').DataTable();
-    });
-
-
-</script>
-
-</body>
-
-
-
-
-</html>
-<?php
-/*
-        if(isset($_POST['myselectedrow']))
-        {
-            $row=$_POST['myselectedrow'];
-            echo $row;
-           // phpalert("hehe");
-        }
-        else
-        {
-            phpalert("mara khao");
-        }
 */
 
-    echo $_POST['myselectedrow'];
-?>
+    $(document).ready(function () {
+        $('#table1').DataTable({
+            "scrollX": true,
+            "scrollY": true,
+            "searching": true
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+    $(document).ready(function () {
+        $('#table2').DataTable({
+            "scrollX": true,
+            "scrollY": true,
+            "searching": true
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+</script>
+</body>
+</html>
+
 
 
