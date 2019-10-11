@@ -132,8 +132,10 @@
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                        <li class="main_nav_item"><a href="#">Sign In</a></li>
+                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
                     </ul>
                 </div>
             </nav>
@@ -162,8 +164,10 @@
                     <li class="main_nav_item"><a href="index.php">home</a></li>
                     <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                     <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                    <li class="main_nav_item"><a href="#">Sign In</a></li>
+                    <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
                     <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                    <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
                 </ul>
 
                 <!-- Menu Social -->

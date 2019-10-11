@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +29,17 @@
 					<img src="images/logo.png" alt="">
 					<span>LectureKoi</span>
 				</div>
+                <div>
+                    <?php
+                    if(isset($_SESSION['loggedIn'])) {
+                        $email= $_SESSION['email'];
+
+                        ?>
+
+                        <b> <p style="color: black"><i> <?php echo $email ?></i> </p> </b>
+
+                    <?php }?>
+                </div>
 			</div>
 
 			<!-- Main Navigation -->

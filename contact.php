@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include ("custom_functions.php");
 
 
@@ -77,6 +78,17 @@
 					<img src="images/logo.png" alt="">
 					<span>LectureKoi</span>
 				</div>
+                <div>
+                    <?php
+                    if(isset($_SESSION['loggedIn'])) {
+                        $email= $_SESSION['email'];
+
+                        ?>
+
+                        <b> <p style="color: black"><i> <?php echo $email ?></i> </p> </b>
+
+                    <?php }?>
+                </div>
 			</div>
 
 			<!-- Main Navigation -->
@@ -86,9 +98,11 @@
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                        <li class="main_nav_item"><a href="#">Sign In</a></li>
+                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
-					</ul>
+                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                    </ul>
 				</div>
 			</nav>
 		</div>
@@ -119,8 +133,10 @@
                     <li class="main_nav_item"><a href="index.php">home</a></li>
                     <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                     <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                    <li class="main_nav_item"><a href="#">Sign In</a></li>
+                    <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
                     <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                    <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
 				</ul>
 
 				<!-- Menu Social -->

@@ -14,8 +14,12 @@
 
         $query = "INSERT INTO lectureupload(StudentId,varsity_name, department, semester, session, fileUrl,video_url,message) 
                                 VALUES ('$id','$varsity','$dept','$semester','$session','$lecture_link','$video_link','$message')";
+
+        $query2="UPDATE lectureupload_crowd_source_system SET status='1' WHERE StudentId='".$id."'";
+
         $result = mysqli_query($con, $query);
-        if ($result) {
+        $result2 = mysqli_query($con, $query2);
+        if ($result & $result2) {
            // $error="data inserted successfully";
             phpalert('Data inserted successfully');
         } else {
