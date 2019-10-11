@@ -4,6 +4,11 @@ if(isset($_POST['logout']))
     header("location: Logout.php");
 	  
   }
+  
+  if(isset( $_SESSION['loggedIn']))
+  {
+	  echo "Logged in";
+  }
 ?>
 <!DOCTYPE html>
 <html>

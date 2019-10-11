@@ -1,4 +1,5 @@
 <?php
+	$error='';
   session_start();
   /*Connect To Database*/
   $db=mysqli_connect("localhost","root","","lecturekoi");
@@ -16,10 +17,12 @@
 	  {
 		  $_SESSION['message']="You are now logged in";
 		  $_SESSION['name']=$name;
+		 // $_SESSION['loggedIn']=true;
 		  header("location: Home.php");
 	  }else
 	  {
 		  $_SESSION['message']="Incorrect email or password";
+		  $error="Incorrect email or password";
 	  }
   }
  ?>
@@ -52,10 +55,11 @@
 					 <a href="Login.php"><input class="btn btn-default" name="back" type="submit" id="button" value="Sign in"></input></a>
                  </center> 
 				 </div>
-                <h1 class="text-center py-2">Sign up for free</h1>
+                <h1 class="text-center py-2">Sign In</h1>
                 <hr>
                 <div>
                   <div class="card-body" style="margin-top:1%">
+				  <?php echo $error ?>
                     <form action ="" method="POST" enctype="multipart/form-data">
 					
 					     <input type="text" class="form-control" name="email" type="text" id="form" placeholder="Enter your email" required></input>

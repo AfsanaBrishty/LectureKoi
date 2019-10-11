@@ -15,14 +15,15 @@
   
 }
 .btn-primary{
-  background: #1ab188;
+  background: #435259;
+  
   border: 0px;
   border-radius: 0px;
   margin-top: 1%;
   width:35%;
 }
 .btn-default{
-  background: #435259;
+  background: #1ab188;
   border: 0px;
   border-radius: 0px;	
   margin-top: 1%;

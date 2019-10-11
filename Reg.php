@@ -1,4 +1,6 @@
 <?php
+  $error='';
+  $error1='';
   session_start();
   /*Connect To Database*/
   $db=mysqli_connect("localhost","root","","lecturekoi");
@@ -12,17 +14,20 @@
 	  $department=mysqli_real_escape_string($db,$_POST['department']);
 	  $pass=mysqli_real_escape_string($db,$_POST['pass']);
 	  $cpass=mysqli_real_escape_string($db,$_POST['cpass']);
+	  $rad=mysqli_real_escape_string($db,$_POST['rad']);
 	  if($pass==$cpass)
 	  {
 		  $pass=md5($pass);
-		  $sql="INSERT INTO users(UserName,StudentID,Email,UniversityName,Department,Password,Status) VALUES('$name','$stuid','$email','$uniname','$department','$pass',0)";
+		  $sql="INSERT INTO users(UserName,StudentID,Email,UniversityName,Department,Password,Status) VALUES('$name','$stuid','$email','$uniname','$department','$pass',$rad)";
 	      mysqli_query($db,$sql);
 		  $_SESSION['message']="You are logged in";
+		  $error1="You are logged in";
 		  $_SESSION['name']=$name;
 		  header("location: Home.php");
 	  }else
 	  {
 		  $_SESSION['message']="The two passwords do not match";
+		  $error="The two passwords do not match";
 	  }
   }
   if(isset($_POST['back']))
@@ -62,17 +67,19 @@
                 <h1 class="text-center py-2">Sign up for free</h1>
                 <hr>
                 <div>
-                  <div class="card-body" style="margin-top:1%">
+                  <div class="card-body" style="margin-top:1%;margin-below:5%">
+				  <?php echo $error ?>
                     <form action ="Reg.php" method="POST">
-					  
-                       
-						 <input type="text" class="form-control" name="name"  id="form" placeholder="Enter your name" required></input>
+					     <input type="text" class="form-control" name="name"  id="form" placeholder="Enter your name" required></input>
 						 <input type="text" class="form-control" name="stuid"  id="form" placeholder="Enter your student ID" required></input>
                          <input type="text" class="form-control" name="email"  id="form" placeholder="Enter your email"required></input>
 						 <input type="text" class="form-control" name="uniname"  id="form" placeholder="Enter your University name"required></input>
 						 <input type="text" class="form-control" name="department"  id="form" placeholder="Enter your department name"required></input>
 						 <input type="password" class="form-control" name="pass" id="form" placeholder="Enter your password" required></input>
 						 <input type="password" class="form-control" name="cpass" id="form" placeholder="Confirm your password" required></input>
+						 <input type="radio" id="form" name="rad" value="0"/>Only Student
+						 <br>
+						 <input type="radio" id="form" name="rad" value="1"/>Student and Contributor
 						 <center>
 						 <input class="btn btn-info" name="reg" type="submit" id="button" value="Sign up now!"></input>
 						 </center>
