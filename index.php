@@ -1,7 +1,28 @@
 <?php
 
+session_start();
+include ("custom_functions.php");
 
+$con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
+        // The nested array to hold all the arrays
+        $recently_added_lecture_item = [];
+
+        $sql="SELECT varsity_name,department,semester,session FROM lectureupload ";
+
+        if ($result=mysqli_query($con,$sql))
+        {
+            // Fetch one and one row
+            while ($row=mysqli_fetch_row($result))
+            {
+                // printf ("%s (%s)\n",$row[0],$row[1]);
+                $recently_added_lecture_item[]=$row;
+            }
+            // Free result set
+            mysqli_free_result($result);
+        }
+
+        mysqli_close($con);
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +41,102 @@
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+
+
+        /*Now the styles*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #ccc;
+            font-family: arial, verdana, tahoma;
+        }
+
+        /*Time to apply widths for accordian to work
+        Width of image = 640px
+        total images = 5
+        so width of hovered image = 640px
+        width of un-hovered image = 40px - you can set this to anything
+        so total container width = 640 + 40*4 = 800px;
+        default width = 800/5 = 160px;
+        */
+
+        .accordian {
+            width: 805px; height: 320px;
+            overflow: hidden;
+
+            /*Time for some styling*/
+            margin: 100px auto;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+            -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+            -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+        }
+
+        /*A small hack to prevent flickering on some browsers*/
+        .accordian ul {
+            width: 1200px;
+            /*This will give ample space to the last item to move
+            instead of falling down/flickering during hovers.*/
+        }
+
+        .accordian li {
+            position: relative;
+            display: block;
+            width: 160px;
+            float: left;
+
+            border-left: 1px solid #888;
+
+            box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+            -webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+
+            /*Transitions to give animation effect*/
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            /*If you hover on the images now you should be able to
+            see the basic accordian*/
+        }
+
+        /*Reduce with of un-hovered elements*/
+        .accordian ul:hover li {width: 40px;}
+        /*Lets apply hover effects now*/
+        /*The LI hover style should override the UL hover style*/
+        .accordian ul li:hover {width: 640px;}
+
+
+        .accordian li img {
+            display: block;
+            z-index: 0;
+        }
+
+        /*Image title styles*/
+        .image_title {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 640px;
+            z-index: 9;
+        }
+        .image_title h2,h3,h4,h5,h6 {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
 
 </head>
 <body>
 
-<div class="super_container">
+<div class="super_container" style="background-color: white">
 
 	<!-- Header -->
 
@@ -36,6 +148,18 @@
 					<img src="images/logo.png" alt="">
 					<span>LectureKoi</span>
 				</div>
+                <div>
+                    <?php
+                        if(isset($_SESSION['loggedIn'])) {
+                           $email= $_SESSION['email'];
+
+                    ?>
+
+                    <b> <p style="color: black"><i> <?php echo $email ?></i> </p> </b>
+
+                    <?php }?>
+                </div>
+
 			</div>
 
 			<!-- Main Navigation -->
@@ -45,8 +169,9 @@
 						<li class="main_nav_item"><a href="index.php">home</a></li>
 						<li class="main_nav_item"><a href="contributors.php">about us</a></li>
 						<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-						<li class="main_nav_item"><a href="#">Sign In</a></li>
+						<li class="main_nav_item"><a href="Login.php">Sign In</a></li>
 						<li class="main_nav_item"><a href="contact.php">contact</a></li>
+                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -77,7 +202,9 @@
 					<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 					<li class="main_nav_item"><a href="#">Sign In</a></li>
 					<li class="main_nav_item"><a href="contact.php">contact</a></li>
-				</ul>
+                    <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                </ul>
 
 				<!-- Menu Social -->
 
@@ -183,123 +310,48 @@
 		</div>
 	</div>
 
-	<!-- Popular -->
+	<!-- Recently added lectures -->
 
-	<div class="popular page_section">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>Popular Tutorials</h1>
-					</div>
-				</div>
-			</div>
 
-			<div class="row course_boxes">
-				
-				<!-- Popular Course Item -->
-				<div class="col-lg-4 course_box">
-					<div class="card">
-						<img class="card-img-top" src="images/course_1.jpg" alt="">
-						<div class="card-body text-center">
-							<div class="card-title"><a href="#">A complete guide to design</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
-					</div>
-				</div>
+    <div class="section_title text-center" style="background-color: white">
+        <h1>Recently Added Lectures </h1>
 
-				<!-- Popular Course Item -->
-				<div class="col-lg-4 course_box">
-					<div class="card">
-						<img class="card-img-top" src="images/course_2.jpg" alt="">
-						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">Beginners guide to HTML</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
-					</div>
-				</div>
+        <!-- We will make a simple accordian with hover effects
+        The markup will have a list with images and the titles-->
+        <div class="accordian">
+            <ul>
 
-				<!-- Popular Course Item -->
-				<div class="col-lg-4 course_box">
-					<div class="card">
-						<img class="card-img-top" src="images/course_3.jpg" alt="">
-						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">Advanced Photoshop</a></div>
-							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
-						</div>
-						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
-								<img src="images/author.jpg" alt="">
-							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>		
-	</div>
+                <?php
+                foreach ($recently_added_lecture_item as  $value) :
+                    $sem=codeToSemester($value[2]);
+                    $ses=codeToSession($value[3]);
+                    ?>
+                    <li>
+                        <div class="image_title">
 
-	<!-- Register -->
+                            <h2><?php echo ucfirst($value[0]) ?></h2>
+                            <h4><?php echo ucfirst($value[1]) ?></h4>
+                            <h5><?php echo "Semester: ". $sem ?></h5>
+                            <h6><?php echo "Session: ". $ses ?></h6>
+                        </div>
+                        <div style="width: 850px;height: 320px">
+                            <img src="<?php echo getvarsityImagePath($value[0]) ?> " alt=""/>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
 
-	<div class="register">
+            </ul>
+        </div>
 
-		<div class="container-fluid">
-			
-			<div class="row row-eq-height">
-				<div class="col-lg-6 nopadding">
-					
-					<!-- Register -->
+    </div>
 
-					<div class="register_section d-flex flex-column align-items-center justify-content-center">
-						<div class="register_content text-center">
-							<h1 class="register_title">Register now and get a discount <span>50%</span> discount until 1 January</h1>
-							<p class="register_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p>
-							<div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
-						</div>
-					</div>
 
-				</div>
 
-				<div class="col-lg-6 nopadding">
-					
-					<!-- Search -->
 
-					<div class="search_section d-flex flex-column align-items-center justify-content-center">
-						<div class="search_background" style="background-image:url(images/search_background.jpg);"></div>
-						<div class="search_content text-center">
-							<h1 class="search_title">Search for your course</h1>
-							<form id="search_form" class="search_form" action="post">
-								<input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Course Name" required="required" data-error="Course name is required.">
-								<input id="search_form_category" class="input_field search_form_category" type="text" placeholder="Category">
-								<input id="search_form_degree" class="input_field search_form_degree" type="text" placeholder="Degree">
-								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">search course</button>
-							</form>
-						</div> 
-					</div>
 
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Services -->
 
-	<!-- Services -->
-
-	<div class="services page_section">
+	<div class="services page_section" style="background-image: url(images/backgroundimage1.jpg); background-repeat: no-repeat; background-size: cover;z-index: 1; margin-bottom: 100px ;">
 		
 		<div class="container">
 			<div class="row">
@@ -312,7 +364,7 @@
 
 			<div class="row services_row">
 
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start p-2" style="background-color: rgba(245, 245, 245, 0.1) !important;">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/books.svg" alt="">
 					</div>
@@ -321,7 +373,7 @@
 						and their corresponding video lectures(if possible). </p>
 				</div>
 
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start p-2"  style="background-color: rgba(245, 245, 245, 0.1) !important;">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/earth-globe.svg" alt="">
 					</div>
@@ -329,7 +381,7 @@
 					<p>Any students of Universities can collaborate with us by signing up and upload their lecture/ video contents. </p>
 				</div>
 
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start p-2" style="background-color: rgba(245, 245, 245, 0.1) !important;">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/exam.svg" alt="">
 					</div>
@@ -373,7 +425,7 @@
 							<div class="owl-item">
 								<div class="testimonials_item text-center">
 									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+									<p class="testimonials_text">empor nermentum.</p>
 									<div class="testimonial_user">
 										<div class="testimonial_image mx-auto">
 											<img src="images/testimonials_user.jpg" alt="">
@@ -384,35 +436,23 @@
 								</div>
 							</div>
 
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
-										</div>
-										<div class="testimonial_name">james cooper</div>
-										<div class="testimonial_title">Graduate Student</div>
-									</div>
-								</div>
-							</div>
+                            <!-- Testimonials Item -->
+                            <div class="owl-item">
+                                <div class="testimonials_item text-center">
+                                    <div class="quote">“</div>
+                                    <p class="testimonials_text">empor nermentum.</p>
+                                    <div class="testimonial_user">
+                                        <div class="testimonial_image mx-auto">
+                                            <img src="images/testimonials_user.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial_name">james cooper</div>
+                                        <div class="testimonial_title">Graduate Student</div>
+                                    </div>
+                                </div>
+                            </div>
 
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
-										</div>
-										<div class="testimonial_name">james cooper</div>
-										<div class="testimonial_title">Graduate Student</div>
-									</div>
-								</div>
-							</div>
+
+
 
 						</div>
 
