@@ -8,7 +8,9 @@
 	  //session_start();
 	  $email=mysqli_real_escape_string($db,$_POST['email']);
 	  $pass=mysqli_real_escape_string($db,$_POST['pass']);
-	  
+
+	  $real_pass=$pass;
+
 	  $pass=md5($pass);
 	  $sql="SELECT * FROM users WHERE Email='$email' AND Password='$pass'";
 	  $result=mysqli_query($db,$sql);
@@ -17,7 +19,8 @@
 	  {
 		  $_SESSION['message']="You are now logged in";
 		  $_SESSION['email']=$email;
-		  $_SESSION['loggedIn']=true;
+          $_SESSION['password']=$real_pass;
+          $_SESSION['loggedIn']=true;
 		  header("location: index.php");
 	  }else
 	  {
