@@ -156,7 +156,7 @@ session_start();
                     <img src="images/university.png"  alt="">
                     <div class="hero_box_content">
                         <?php $link = "lectures_download.php?semester=1 & dept_name=".$_GET["dept_name"]." & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 2nd semester</h2></a>                    </div>
+                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">1st year 1st semester</h2></a>                    </div>
                 </div>
 
 

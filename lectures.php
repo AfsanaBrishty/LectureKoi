@@ -140,6 +140,7 @@ session_start();
 				<div class="col">
 					<div class="section_title text-center">
 						<h1>Popular Universities</h1>
+
 					</div>
 				</div>
 			</div>
@@ -162,8 +163,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Rain <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -180,8 +181,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name"> Tawkat <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -198,8 +199,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Nishan Paul <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -216,8 +217,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Abrar <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -234,8 +235,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name"> Joy <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -252,8 +253,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Ifti Aunim <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -270,8 +271,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Anwar Islam <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -287,8 +288,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Arnab <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -305,8 +306,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name"> shakil chowdhury<span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -354,7 +355,8 @@ session_start();
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/courses_custom.js"></script>
+
+<!-- <script src="js/courses_custom.js"></script> -->
 
 </body>
 </html>

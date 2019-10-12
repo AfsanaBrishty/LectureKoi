@@ -218,7 +218,7 @@ if (isset($_POST['submit'])) {
                                     <form action ="" method="POST" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label>Enter Id</label>
+                                            <label>Student Id</label>
                                             <input type="text" name="id" class="form-control" placeholder="Enter id" required="required" data-error="Please fillup this field" />
                                         </div>
 

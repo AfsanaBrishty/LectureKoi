@@ -45,6 +45,7 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
+
     <style>
 
 
@@ -170,6 +171,8 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 						<li class="main_nav_item"><a href="contributors.php">about us</a></li>
 						<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                        <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+
                         <?php
                         if(!isset($_SESSION['loggedIn'])) { ?>
                             <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
@@ -208,6 +211,8 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 					<li class="main_nav_item"><a href="contributors.php">about us</a></li>
 					<li class="main_nav_item"><a href="lectures.php">lectures</a></li>
 					<li class="main_nav_item"><a href="contact.php">contact</a></li>
+                    <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+
                     <?php
                     if(!isset($_SESSION['loggedIn'])) { ?>
                         <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
@@ -380,8 +385,8 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/books.svg" alt="">
 					</div>
-					<h3>Amazing Library</h3>
-					<p>Here You can find the class lectures,Assignments,quiz questions & solutions,semester final questions & solutions (PDF/Images/doc)
+					<h3 style="color: orange">Amazing Library</h3>
+					<p style="color: black">Here You can find the class lectures,Assignments,quiz questions & solutions,semester final questions & solutions (PDF/Images/doc)
 						and their corresponding video lectures(if possible). </p>
 				</div>
 
@@ -389,16 +394,16 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/earth-globe.svg" alt="">
 					</div>
-					<h3>Crowd Sourcing</h3>
-					<p>Any students of Universities can collaborate with us by signing up and upload their lecture/ video contents. </p>
+					<h3 style="color: orange">Crowd Sourcing</h3>
+					<p style="color: black">Any students of Universities can collaborate with us by signing up and upload their lecture/ video contents. </p>
 				</div>
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start p-2" style="background-color: rgba(245, 245, 245, 0.1) !important;">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="images/exam.svg" alt="">
 					</div>
-					<h3>Online Courses</h3>
-					<p>This section is not activated yet.But in future we will have amazing tutorials on the lectures</p>
+					<h3 style="color: orange">Online Courses</h3>
+					<p style="color: black">This section is not activated yet.But in future we will have amazing tutorials on the lectures</p>
 				</div>
 
 			</div>
@@ -413,7 +418,7 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 	<div class="testimonials page_section">
 		<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
 		<div class="testimonials_background_container prlx_parent">
-			<div class="testimonials_background prlx" style="background-image:url(images/testimonials_background.jpg)"></div>
+			<div class="testimonials_background prlx" style="background-image:url(images/bg_slider.jpg)"></div>
 		</div>
 		<div class="container">
 
@@ -437,12 +442,12 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 							<div class="owl-item">
 								<div class="testimonials_item text-center">
 									<div class="quote">“</div>
-									<p class="testimonials_text">empor nermentum.</p>
+									<p class="testimonials_text"> The best website I have ever seen.</p>
 									<div class="testimonial_user">
 										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
+											<img src="images/attu.jpg" alt="">
 										</div>
-										<div class="testimonial_name">james cooper</div>
+										<div class="testimonial_name">Atique Ahmed Ziad</div>
 										<div class="testimonial_title">Graduate Student</div>
 									</div>
 								</div>
@@ -452,12 +457,12 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
                             <div class="owl-item">
                                 <div class="testimonials_item text-center">
                                     <div class="quote">“</div>
-                                    <p class="testimonials_text">empor nermentum.</p>
+                                    <p class="testimonials_text">My CGPA got higher after following this website.</p>
                                     <div class="testimonial_user">
                                         <div class="testimonial_image mx-auto">
-                                            <img src="images/testimonials_user.jpg" alt="">
+                                            <img src="images/anika.jpg" alt="">
                                         </div>
-                                        <div class="testimonial_name">james cooper</div>
+                                        <div class="testimonial_name">Anika Binte Aftab</div>
                                         <div class="testimonial_title">Graduate Student</div>
                                     </div>
                                 </div>

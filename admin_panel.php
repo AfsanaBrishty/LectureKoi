@@ -410,36 +410,8 @@ $_SESSION['email']="admin";
 
 
 <script>
-/*
-    $('#table1 tr').click(function() {
 
-        $(this).toggleClass('selected');
-        var row = [];
-        $('.selected').each(function(i, v) {
-            row.push($(v).text());
-        })
-
-        $('#selectedRows').val(row);
-        //alert(row);
-        //window.location.href = "admin_panel.php";
-
-
-    });
-
-    $('#table2 tr').click(function() {
-
-        $(this).toggleClass('selected');
-        var row = [];
-        $('.selected').each(function(i, v) {
-            row.push($(v).text());
-        })
-
-        $('#selectedRows').val(row);
-//        alert(row);
-
-    });
-*/
-
+//made all table scrollable on x-axis and y-axis
     $(document).ready(function () {
         $('#table1').DataTable({
             "scrollX": true,

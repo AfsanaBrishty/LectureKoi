@@ -1,5 +1,3 @@
-/* JS Document */
-
 /******************************
 
 [Table of Contents]
@@ -282,12 +280,10 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
-
+	/*
 	7. Initialize Parallax
 
 	*/
-
 	function initParallax()
 	{
 		// Add parallax effect to home slider
