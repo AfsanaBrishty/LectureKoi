@@ -275,6 +275,6 @@ session_start();
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/courses_custom.js"></script>
+
 </body>
 </html>

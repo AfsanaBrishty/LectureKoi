@@ -10,7 +10,6 @@
 6. Initialize Testimonials Slider
 7. Initialize Parallax
 
-
 ******************************/
 
 $(document).ready(function()

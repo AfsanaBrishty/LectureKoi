@@ -386,7 +386,64 @@ session_start();
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/teachers_custom.js"></script>
+<!--<script src="js/teachers_custom.js"></script>-->
+
+<script>
+    $(document).ready(function()
+    {
+
+
+        var ctrl = new ScrollMagic.Controller();
+
+        initMilestones();
+        /*
+
+	5. Initialize Milestones
+
+	*/
+
+        function initMilestones()
+        {
+            if($('.milestone_counter').length)
+            {
+                var milestoneItems = $('.milestone_counter');
+
+                milestoneItems.each(function(i)
+                {
+                    var ele = $(this);
+                    var endValue = ele.data('end-value');
+                    var eleValue = ele.text();
+
+
+
+                    var milestoneScene = new ScrollMagic.Scene({
+                        triggerElement: this,
+                        triggerHook: 'onEnter',
+                        reverse:false
+                    })
+                        .on('start', function()
+                        {
+                            var counter = {value:eleValue};
+                            var counterTween = TweenMax.to(counter, 4,
+                                {
+                                    value: endValue,
+                                    roundProps:"value",
+                                    ease: Circ.easeOut,
+                                    onUpdate:function()
+                                    {
+                                        document.getElementsByClassName('milestone_counter')[i].innerHTML =  counter.value ;
+                                    }
+                                });
+                        })
+                        .addTo(ctrl);
+                });
+            }
+        }
+
+
+    });
+
+</script>
 
 </body>
 </html>

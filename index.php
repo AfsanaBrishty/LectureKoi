@@ -1,7 +1,7 @@
 <?php
-
-session_start();
 include ("custom_functions.php");
+session_start();
+
 
 $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
 
@@ -338,10 +338,13 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
         <div class="accordian">
             <ul>
 
-                <?php
+                <?php $i=1;
                 foreach ($recently_added_lecture_item as  $value) :
-                    $sem=codeToSemester($value[2]);
-                    $ses=codeToSession($value[3]);
+                  //  print_r($value);
+                    //echo $value[2]." ".$value[3];
+                    $i++;
+                    $sem=codeToSemester(trim($value[2]));
+                    $ses=codeToSession(trim($value[3]));
                     ?>
                     <li>
                         <div class="image_title">
@@ -351,11 +354,13 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
                             <h5><?php echo "Semester: ". $sem ?></h5>
                             <h6><?php echo "Session: ". $ses ?></h6>
                         </div>
-                        <div style="width: 850px;height: 320px">
-                            <img src="<?php echo getvarsityImagePath($value[0]) ?> " alt=""/>
+                        <div style="width: 850px;height: 320px;">
+                            <img src="<?php echo getvarsityImagePath(trim($value[0])) ?>" alt=""/>
                         </div>
                     </li>
-                <?php endforeach; ?>
+                <?php endforeach;
+
+                ?>
 
             </ul>
         </div>
@@ -524,7 +529,51 @@ $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connec
 <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
+<!--this js important for home page because it is used in header slider and bottom slider-->
 <script src="js/custom.js"></script>
 
 </body>
 </html>
+<?php
+
+function codeToSession($msg)
+{
+
+    $session_list = array("1701"=>"spring 17","1702"=>"Fall 17","1801"=>"spring 18","1802"=>"Fall 18","1901"=>"spring 19","1902"=>"Fall 19"
+    ,"2001"=>"spring 20");
+
+    if(isset($session_list[$msg]))
+    {
+        $val=$session_list[$msg];
+        return $val;
+    }
+
+}
+function codeToSemester($msg)
+{
+
+    $semester_list = array("1"=>"1.1", "2"=>"1.2", "3"=>"2.1","4"=>"2.2","5"=>"3.1","6"=>"3.2",
+        "7"=>"4.1","8"=>"4.2");
+    if(isset($semester_list[$msg]))
+    {
+        $val=$semester_list[$msg];
+        echo $val;
+        return $val;
+    }
+
+}
+function getvarsityImagePath($var)
+{
+    $images_path=array("aust"=>"images/varsity/aust.jpg","buet"=>"images/varsity/Buet.jpg","cuet"=>"images/varsity/CUET.jpg","ruet"=>"images/varsity/ruet.jpg",
+        "kuet"=>"images/varsity/kuet.jpg","sust"=>"images/varsity/SUST.jpg","du"=>"images/varsity/DU.jpg");
+
+    if(isset($images_path[$var]))
+    {
+        $path=$images_path[$var];
+        return $path;
+    }
+
+
+}
+echo $i;
+?>

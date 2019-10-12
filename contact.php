@@ -223,13 +223,13 @@
 								</li>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
-										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										<img src="images/smartphone.svg" alt="">
 									</div>
 									01535155114
 								</li>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
-										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										<img src="images/envelope.svg" alt="">
 									</div>sajidahmed696@gmail.com
 								</li>
 							</ul>
@@ -288,7 +288,7 @@
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/contact_custom.js"></script>
+<!--<script src="js/contact_custom.js"></script>-->
 
 </body>
 </html>
