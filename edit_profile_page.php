@@ -1,13 +1,39 @@
 <?php
+session_start();
 
-    session_start();
+    $label='';
+    if(isset($_GET['edit_username']))
+    {
+        $label='Username';
+    }
+    if(isset($_GET['edit_id']))
+    {
+        $label='StudentId';
+    }
+    if(isset($_GET['edit_email']))
+    {
+        $label='Email';
+    }
+    if(isset($_GET['edit_varsity']))
+    {
+        $label='UniversityName';
+    }
+    if(isset($_GET['edit_dept']))
+    {
+        $label='Department';
+    }
+    if(isset($_GET['edit_pass']))
+    {
+        $label='Password';
+    }
+    $column_name=strtolower($label);
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LectureKoi-Departments</title>
+    <title>LectureKoi</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -24,10 +50,17 @@
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <style>
+        .profile label{
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
-
 <div class="super_container">
 
     <!-- Header -->
@@ -43,13 +76,16 @@
                 <div>
                     <?php
                     if(isset($_SESSION['loggedIn'])) {
-                        $email= $_SESSION['email'];
+                        $email=$_SESSION['email'];
+
 
                         ?>
 
-                        <b> <p style="color: black"><i> <?php echo $email ?></i> </p> </b>
+                        <p style="color: black"><i> <?php echo $email ?></i> </p>
 
-                    <?php }?>
+
+                        <?php
+                    } ?>
                 </div>
             </div>
 
@@ -60,7 +96,6 @@
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
                         <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
                         <?php
@@ -135,95 +170,65 @@
             <div class="home_background prlx" style="background-image:url(images/high-tech.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Departments</h1>
+            <h1>Lecture Upload </h1>
         </div>
     </div>
 
+    <?php
 
-    <!-- select department segment -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="section_title text-center">
-                    <h1>Select Department</h1>
+    if(isset($_SESSION['loggedIn']))
+    {
+        ?>
+
+
+        <!-- Form of uploading lectures  -->
+        <div class="container-fluid" style="background-image: url(images/backgroundimage1.jpg); background-size: cover" >
+            <h1 class="text-center" style="color: crimson">User Profile </h1>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+
+                <div class="d-inline-flex p-2 col-md-6" style="background-color: rgba(245, 245, 245, 0.1) !important;">
+
+                    <div  style="margin:0 auto; float:none;">
+
+                        <form action ="" method="POST" enctype="multipart/form-data">
+
+                            <!--Change Field-->
+                            <div class="form-group">
+                                <label><?php echo $label ?></label>
+                                <input type="text" name="edit_field" class="form-control" />
+                                <div class="d-flex flex-row align-items-center pt-2">
+                                    <input type="submit" name="change" class="btn btn-dark" value="Save Change" />
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
                 </div>
             </div>
         </div>
-        <div class="row">
 
-            <div class="col-lg-12 hero_box_col">
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_semester.php?dept_name=cse&varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">CSE</h2></a>
-                    </div>
-                </div>
-
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_semester.php?dept_name=eee&varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">EEE</h2></a>
-
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_semester.php?dept_name=mechanical & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Mechanical</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-                        <?php $link = "lectures_semester.php?dept_name=civil & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Civil</h2></a>
-                    </div>
-                </div>
-
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-
-                        <?php $link = "lectures_semester.php?dept_name=ipe &varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">IPE</h2></a>
-                    </div>
-                </div>
-
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                    <img src="images/university.png"  alt="">
-                    <div class="hero_box_content">
-
-                        <?php $link = "lectures_semester.php?dept_name=textile & varsity_name=".$_GET["varsity_name"]; ?>
-                        <a href="<?php echo $link; ?>" > <h2 class="hero_box_title">Textile</h2></a>
-                    </div>
-                </div>
-
-
-
-
-
-
-            </div>
-
+    <?php }
+    else
+    {
+        ?>
+        <div class="container-fluid" style="height: 200px">
+            <h1 class="text-center text-danger"> Please Log In to View your information</h1>
 
         </div>
 
-    </div>
-
-
-
-
-
-
-
-
+        <?php
+    }
+    ?>
     <!-- Footer -->
 
     <footer class="footer">
@@ -250,7 +255,6 @@
     </footer>
 
 </div>
-
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -259,8 +263,43 @@
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/courses_custom.js"></script>
+<script src="js/custom.js"></script>
+
+
+
 </body>
 </html>
+<?php
+include ("custom_functions.php");
+
+    if(isset($_POST['change']))
+    {
+        $value=$_POST['edit_field'];
+
+        $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
+
+        if(!empty($value))
+        {
+            //echo $value."<br>";
+            //echo $column_name."<br>";
+            //echo $_SESSION['email'];
+
+            $sql="UPDATE users SET ".$column_name." = '".$value."' WHERE email = '".$_SESSION['email']."' ";
+
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                //$error="data inserted successfully";
+                phpalert('Information changed successfully');
+            } else {
+                //$error="data insertion failed";
+                 phpalert('Information change failed');
+            }
+        }
+        mysqli_close($con);
+    }
+
+
+?>

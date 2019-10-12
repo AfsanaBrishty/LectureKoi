@@ -101,9 +101,17 @@
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
-                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+                        <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                        <?php
+                        if(!isset($_SESSION['loggedIn'])) { ?>
+                            <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                        <?php }
+                        else { ?>
+                            <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                        <?php } ?>
 
                     </ul>
                 </div>
@@ -133,9 +141,17 @@
                     <li class="main_nav_item"><a href="index.php">home</a></li>
                     <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                     <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                    <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+
                     <li class="main_nav_item"><a href="contact.php">contact</a></li>
-                    <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+                    <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                    <?php
+                    if(!isset($_SESSION['loggedIn'])) { ?>
+                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                    <?php }
+                    else { ?>
+                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                    <?php } ?>
 
                 </ul>
 

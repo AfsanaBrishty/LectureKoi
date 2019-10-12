@@ -2,8 +2,6 @@
 session_start();
 include ("custom_functions.php");
 
-
-
 if (isset($_POST['submit'])) {
     //require ("config.php");
     $con=mysqli_connect("localhost","root","","lecturekoi") or die("Unable to connect Database");
@@ -97,13 +95,16 @@ if (isset($_POST['submit'])) {
                     <div>
                         <?php
                         if(isset($_SESSION['loggedIn'])) {
-                            $email= $_SESSION['email'];
+                                $email=$_SESSION['email'];
+
 
                             ?>
 
-                            <b> <p style="color: black"><i> <?php echo $email ?></i> </p> </b>
+                             <p style="color: black"><i> <?php echo $email ?></i> </p>
 
-                        <?php }?>
+
+                        <?php
+                        } ?>
                     </div>
                 </div>
 
@@ -114,9 +115,17 @@ if (isset($_POST['submit'])) {
                             <li class="main_nav_item"><a href="index.php">home</a></li>
                             <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                             <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                            <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+
                             <li class="main_nav_item"><a href="contact.php">contact</a></li>
-                            <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+                            <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                            <?php
+                            if(!isset($_SESSION['loggedIn'])) { ?>
+                                <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                            <?php }
+                            else { ?>
+                                <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                            <?php } ?>
 
                         </ul>
                     </div>
@@ -146,9 +155,16 @@ if (isset($_POST['submit'])) {
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
-                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+                        <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                        <?php
+                        if(!isset($_SESSION['loggedIn'])) { ?>
+                            <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                        <?php }
+                        else { ?>
+                            <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                        <?php } ?>
 
                     </ul>
 
@@ -181,19 +197,20 @@ if (isset($_POST['submit'])) {
 
         if(isset($_SESSION['loggedIn']))
         {
+
         ?>
-        <h2 align="center"  >Uploading lectures </h2>
-        <br />
 
 
         <!-- Form of uploading lectures  -->
-        <div class="container-fluid" >
+        <div class="container-fluid" style="background-image: url(images/backgroundimage1.jpg); background-size: cover" >
+            <h1 class="text-center" style="color: crimson">Uploading lectures </h1>
+            <br />
           <div class="row">
                   <div class="col-md-3">
 
                   </div>
 
-                        <div class="d-inline-flex p-2 bg-dark col-md-6">
+                        <div class="d-inline-flex p-2 col-md-6" style="background-color: rgba(245, 245, 245, 0.1) !important;">
 
                                 <div  style="margin:0 auto; float:none;">
 

@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Course - Teachers</title>
+<title>Contributors</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -49,8 +49,17 @@ session_start();
                         <li class="main_nav_item"><a href="index.php">home</a></li>
                         <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                         <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                        <li class="main_nav_item"><a href="#">Sign In</a></li>
+
                         <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                        <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                        <?php
+                        if(!isset($_SESSION['loggedIn'])) { ?>
+                            <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                        <?php }
+                        else { ?>
+                            <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                        <?php } ?>
 					</ul>
 				</div>
 			</nav>
@@ -79,8 +88,17 @@ session_start();
                     <li class="main_nav_item"><a href="index.php">home</a></li>
                     <li class="main_nav_item"><a href="contributors.php">about us</a></li>
                     <li class="main_nav_item"><a href="lectures.php">lectures</a></li>
-                    <li class="main_nav_item"><a href="#">Sign In</a></li>
+
                     <li class="main_nav_item"><a href="contact.php">contact</a></li>
+                    <li class="main_nav_item"><a href="profile_page.php">Profile</a></li>
+                    <?php
+                    if(!isset($_SESSION['loggedIn'])) { ?>
+                        <li class="main_nav_item"><a href="Login.php">Sign In</a></li>
+                    <?php }
+                    else { ?>
+                        <li class="main_nav_item"><a href="Logout.php">Log Out</a></li>
+
+                    <?php } ?>
 				</ul>
 
 				<!-- Menu Social -->
